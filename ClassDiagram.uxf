@@ -1,0 +1,86 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>20</x><y>100</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;User&gt;&gt;
+--
+-id: Long
+-Password: string
+-Recipies: list of Long (recipe IDs)
+--
+
+--
+Responsibilities
+-- Represents the user, gives access
+to their recipies
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>300</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Recipe&gt;&gt;
+
+{Some Properties}
+--
+-id: Long
+-Steps: List of strings 
+-Timers
+-Reminders
+--
+--
+Responsibilities
+--Represents a recipe that a user 
+can create and a smart device can 
+instruct
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>500</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Reminder&gt;&gt;
+
+--
+Reminder Text: String 
+Reminder Time: Time
+--
+--
+Responsibilities
+--Represents a reminder that 
+A smart device can set</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>290</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Timer&gt;&gt;
+--
+-Duration: Integer
+--
+
+--
+Responsibilities
+--Represents a timer a smart device
+can set</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>520</y><w>280</w><h>270</h></coordinates><panel_attributes>
+--
+
+There are 2 posibilities:
+1. A recipie is a list of both strings and auxiliary 
+object representing timers and reminders. 
+
+2. Individual instructions are objects themselves 
+and can call their own timers
+
+Both Possibilties are layed out here
+
+
+
+
+
+
+
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>60</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Instruction&gt;&gt;
+
+--
+-id: Long
+-Instruction Text: String 
+-Timer
+-Reminder
+--
+Responsibilities
+--A break down of a recipie into its 
+component pieces which are each 
+usable by the smart device
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>71</y><w>210</w><h>160</h></coordinates><panel_attributes>&lt;&lt;Recipe&gt;&gt;
+
+--
+-id: Long
+Steps: List of instructions 
+--
+--
+Responsibilities
+--Represents a recipe that a user 
+can create and a smart device can 
+instruct</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>150</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>240</y><w>110</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;120</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>150</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>340</y><w>380</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;360;10</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>420</y><w>380</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;360;160</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>240</y><w>120</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;70</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>240</y><w>160</w><h>320</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;300</additional_attributes></element></diagram>
