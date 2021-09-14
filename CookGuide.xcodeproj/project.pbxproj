@@ -13,6 +13,7 @@
 		9F6C002F26EA524D00689AA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C002E26EA524D00689AA7 /* Preview Assets.xcassets */; };
 		9F6C003A26EA524D00689AA7 /* CookGuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C003926EA524D00689AA7 /* CookGuideTests.swift */; };
 		9F6C004526EA524E00689AA7 /* CookGuideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C004426EA524E00689AA7 /* CookGuideUITests.swift */; };
+		9F82B79626F13DAE0066B81B /* Recipe View Initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F82B79526F13DAE0066B81B /* Recipe View Initializer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		9F6C004426EA524E00689AA7 /* CookGuideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookGuideUITests.swift; sourceTree = "<group>"; };
 		9F6C004626EA524E00689AA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F6C005226EA53FF00689AA7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9F82B79526F13DAE0066B81B /* Recipe View Initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe View Initializer.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				9F6C002726EA524C00689AA7 /* CookGuideApp.swift */,
 				9F6C002926EA524C00689AA7 /* ContentView.swift */,
+				9F82B79526F13DAE0066B81B /* Recipe View Initializer.swift */,
 				9F6C002B26EA524D00689AA7 /* Assets.xcassets */,
 				9F6C003026EA524D00689AA7 /* Info.plist */,
 				9F6C002D26EA524D00689AA7 /* Preview Content */,
@@ -263,6 +266,7 @@
 			files = (
 				9F6C002A26EA524C00689AA7 /* ContentView.swift in Sources */,
 				9F6C002826EA524C00689AA7 /* CookGuideApp.swift in Sources */,
+				9F82B79626F13DAE0066B81B /* Recipe View Initializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
