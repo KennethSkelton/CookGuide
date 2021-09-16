@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RealmSwift
+
 
 func createTestData() -> Array<String>{
     let testNames = ["eggs", "milk", "cheese", "bacon", "soup", "lettuce", "fish", "beans", "crab", "hamburgers","eggs", "milk", "cheese", "bacon", "soup", "lettuce", "fish", "beans", "crab", "hamburgers"]
