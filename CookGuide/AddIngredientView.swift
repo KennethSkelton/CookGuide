@@ -42,6 +42,7 @@ struct AddIngredientView: View {
                 Button(
                     action: {
                     saveRealmArray(existingIngredients)
+                        NavigationLink(destination: AddInstructionView()){}
                     },
                     label: {
                         Text("Submit")

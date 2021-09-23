@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import RealmSwift
+
+let app = RealmSwift.App(id: REALM_ID)
 
 @main
-struct CookGuideApp: App {
+struct CookGuideApp: SwiftUI.App {
+    
+    @StateObject var state = AppState()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
+                .environmentObject(state)
         }
     }
 }

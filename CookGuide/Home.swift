@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 
-struct ContentView: View {
+struct Home: View {
     
     
     
@@ -30,11 +30,6 @@ struct ContentView: View {
                                 .frame(width: 50, height: 50)
                                 .border(Color.black)
                         }
-                    
-                        
-                        
-                    
-
                 
                 }
                 Spacer()
@@ -60,8 +55,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Home()
     }
 }

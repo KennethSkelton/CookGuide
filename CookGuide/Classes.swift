@@ -8,50 +8,88 @@
 import Foundation
 import RealmSwift
 
+var state = AppState()
+
+func signup(username: String, password: String) {
+    print("Signup start")
+        if username.isEmpty || password.isEmpty {
+            return
+        }
+        state.error = nil
+        app.emailPasswordAuth.registerUser(email: username, password: password)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: {
+                switch $0 {
+                case .finished:
+                    break
+                case .failure(let error):
+                    state.error = error.localizedDescription
+                }
+            }, receiveValue: {
+                state.error = nil
+                login(username: username, password: password)
+            })
+            .store(in: &state.cancellables)
+    print("Signup end")
+    }
+
+
+func login(username: String, password: String){
+    print("Login start")
+    app.login(credentials:
+                .emailPassword(email: username, password: password))
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: {
+                    switch $0 {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        state.error = error.localizedDescription
+                    }
+                }, receiveValue: {
+                    state.loginPublisher.send($0)
+                })
+                .store(in: &state.cancellables)
+    print("login end")
+}
+
+
+
+
 func saveRealmArray(_ objects: [Object]) {
     
-    let app = App(id: REALM_ID)
-
-    // Log in anonymously.
-    app.login(credentials: Credentials.anonymous) { (result) in
-        // Remember to dispatch back to the main thread in completion handlers
-        // if you want to do anything on the UI.
-        DispatchQueue.main.async {
-            switch result {
-            case .failure(let error):
-                print("Login failed: \(error)")
-            case .success(let user):
-                print("Login as \(user) succeeded!")
-                
-                let user = app.currentUser!
-
-                // The partition determines which subset of data to access.
-                let partitionValue = INGREDIENT_PARTITION_VALUE
-
-                // Get a sync configuration from the user object.
-                var configuration = user.configuration(partitionValue: partitionValue)
-                // Open the realm asynchronously to ensure backend data is downloaded first.
-                Realm.asyncOpen(configuration: configuration) { (result) in
-                    switch result {
-                    case .failure(let error):
-                        print("Failed to open realm: \(error.localizedDescription)")
-                    case .success(let realm):
-                        break
-                    }
-                }
-            }
-        }
-    }
     
-    
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(objects)
-        }
     }
 
-class IngredientObject: Object {
+@objcMembers class IngredientObject: Object, ObjectKeyIdentifiable {
     
-    @Persisted var ingredient = ""
-    //@Persisted var _id = ""
+    dynamic var ingredient: String = ""
+    dynamic var _id = UUID().uuidString
+    
+    override static func primaryKey() -> String? {
+        return "_id"
+    }
+}
+
+class User: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var _id = UUID().uuidString
+    @Persisted var partition = "" // "user=_id"
+    @Persisted var userName = ""
+    @Persisted var lastSeenAt: Date?
+    @Persisted var presence = "Off-Line"
+
+    var presenceState: Presence {
+        get { return Presence(rawValue: presence) ?? .hidden }
+        set { presence = newValue.asString }
+    }
+}
+
+enum Presence: String {
+    case onLine = "On-Line"
+    case offLine = "Off-Line"
+    case hidden = "Hidden"
+    
+    var asString: String {
+        self.rawValue
+    }
 }
