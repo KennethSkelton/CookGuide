@@ -11,39 +11,45 @@ struct LoginView: View {
     @State var username = ""
     @State var password = ""
     var body: some View {
-       
-        VStack{
-            TextField(
-                "UserName",
-                text: $username
-            )
-            
-            TextField(
-                "Password",
-                text: $password
-            )
-            
-            Button(
-                action: {
-                print("Login button press")
-                login(username: username, password: password)
-                print("Login button end")
-                },
-                label: {
+        NavigationView {
+            VStack{
+                TextField(
+                    "UserName",
+                    text: $username
+                )
+                
+                TextField(
+                    "Password",
+                    text: $password
+                )
+                NavigationLink(destination: Home(username: username)){
+                    Button(
+                        action: {
+                        print("Login button press")
+                        //app = login(username: username, password: password)
+                        print("Login button end")
+                        
+                        },
+                        label: {
+                        }
+                    )
                     Text("Login")
+                    
                 }
-            )
-            
-            Button(
-                action: {
-                print("Signup button press")
-                signup(username: username, password: password)
-                print("Signup button end")
-                },
-                label: {
+                NavigationLink(destination: Home()){
+                    Button(
+                        action: {
+                        print("Signup button press")
+                        //signup(username: username, password: password)
+                        print("Signup button end")
+                        
+                        },
+                        label: {
+                        }
+                    )
                     Text("Register")
                 }
-            )
+            }
         }
     }
 }

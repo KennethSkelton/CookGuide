@@ -30,7 +30,7 @@ struct AddIngredientView: View {
                         "Ingredient",
                         text: $tempIngredient,
                         onCommit: {
-                            var temp = IngredientObject()
+                            let temp = IngredientObject()
                             temp.ingredient = tempIngredient
                             //var id = UUID()
                             //temp._id = id.uuidString
@@ -39,15 +39,16 @@ struct AddIngredientView: View {
                         })
                     
                 }
-                Button(
-                    action: {
-                    saveRealmArray(existingIngredients)
-                        NavigationLink(destination: AddInstructionView()){}
-                    },
-                    label: {
-                        Text("Submit")
-                    }
-                )
+                NavigationLink(destination: AddInstructionView(ingredients: existingIngredients)){
+                    Button(
+                        action: {
+                        //saveRealmArray(existingIngredients)
+                        },
+                        label: {
+                        }
+                    )
+                    Text("Submit")
+                }
             }
         }
     }

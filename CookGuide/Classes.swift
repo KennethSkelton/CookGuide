@@ -34,7 +34,7 @@ func signup(username: String, password: String) {
     }
 
 
-func login(username: String, password: String){
+func login(username: String, password: String) -> App{
     print("Login start")
     app.login(credentials:
                 .emailPassword(email: username, password: password))
@@ -51,6 +51,7 @@ func login(username: String, password: String){
                 })
                 .store(in: &state.cancellables)
     print("login end")
+    return app
 }
 
 
@@ -59,7 +60,14 @@ func login(username: String, password: String){
 func saveRealmArray(_ objects: [Object]) {
     
     
+    let realm = try! Realm()
+    
+    for object in objects{
+       try! realm.write {
+           realm.add(object)
+       }
     }
+}
 
 @objcMembers class IngredientObject: Object, ObjectKeyIdentifiable {
     
@@ -69,6 +77,33 @@ func saveRealmArray(_ objects: [Object]) {
     override static func primaryKey() -> String? {
         return "_id"
     }
+}
+
+
+@objcMembers class InstructionObject: Object, ObjectKeyIdentifiable {
+    
+    dynamic var instruction: String = ""
+    dynamic var _id = UUID().uuidString
+    dynamic var hasTimer: Bool = false
+    dynamic var timerDuration: Int = 0;
+    
+    override static func primaryKey() -> String? {
+        return "_id"
+    }
+}
+
+
+@objcMembers class RecipeObject: Object, ObjectKeyIdentifiable {
+    
+    dynamic var recipeName = "Default"
+    dynamic var ingredients = [IngredientObject]()
+    dynamic var instructions = [InstructionObject]()
+    dynamic var _id = UUID().uuidString
+    
+    override static func primaryKey() -> String? {
+        return "_id"
+    }
+
 }
 
 class User: Object, ObjectKeyIdentifiable {
@@ -93,3 +128,11 @@ enum Presence: String {
         self.rawValue
     }
 }
+
+struct localDatabase {
+    
+    var recipies = [RecipeObject]()
+    var user: User = User()
+}
+
+var localdb = localDatabase()

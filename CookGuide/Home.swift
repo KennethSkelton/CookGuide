@@ -14,23 +14,23 @@ struct Home: View {
     
     
     @State var existingRecipes = createTestData()
-
+    var username = ""
     
     
     var body: some View {
         NavigationView{
             VStack{
-                HStack{
-                    
-                Text("My Recipes")
-                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    
-                        NavigationLink(destination: AddIngredientView()){
-                            Text("+").font(.system(size:60))
-                                .frame(width: 50, height: 50)
-                                .border(Color.black)
-                        }
+                Text("Hello " + username)
                 
+                HStack{
+                    Text("My Recipes")
+                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        
+                            NavigationLink(destination: AddIngredientView()){
+                                Text("+").font(.system(size:60))
+                                    .frame(width: 50, height: 50)
+                                    .border(Color.black)
+                            }
                 }
                 Spacer()
                 List(){
@@ -41,8 +41,7 @@ struct Home: View {
                             },
                             label:{
                                 HStack{
-                                    Image(/*@START_MENU_TOKEN@*/"Image Name"/*@END_MENU_TOKEN@*/)
-                                    Text(existingRecipes[idx])
+                                    Text(localdb.recipies[idx].recipeName)
                                     
                                 }
                             }
