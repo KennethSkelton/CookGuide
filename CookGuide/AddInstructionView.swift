@@ -44,18 +44,10 @@ struct AddInstructionView: View {
                     action: {
                         let intTimer: Int? = Int(textTempTimer)
                         if(intTimer ?? 0 > 0){
-                            let tempObject = InstructionObject()
-                            tempObject.instruction = tempInstruction
-                            tempObject.hasTimer = true
-                            tempObject.timerDuration = intTimer ?? 0
-                            existingInstructions.append(tempObject)
+                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: true, timerDuration: intTimer ?? 0))
                         }
                         else{
-                            let tempObject = InstructionObject()
-                            tempObject.instruction = tempInstruction
-                            tempObject.hasTimer = false
-                            tempObject.timerDuration = 0
-                            existingInstructions.append(tempObject)
+                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: false, timerDuration: 0))
                         }
                         textTempTimer = "";
                         tempInstruction = "";
@@ -68,10 +60,7 @@ struct AddInstructionView: View {
                 NavigationLink(destination: Home()){
                     Button(
                         action: {
-                            let tempRecipe = RecipeObject()
-                            tempRecipe.ingredients = ingredients
-                            tempRecipe.instructions = existingInstructions
-                            localdb.recipies.append(tempRecipe)
+                            localdb.recipies.append(RecipeObject(recipeName: "temp", ingredients: ingredients, instructions: existingInstructions))
                         },
                         label: {
                             

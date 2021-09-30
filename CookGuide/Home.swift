@@ -35,21 +35,14 @@ struct Home: View {
                 Spacer()
                 List(){
                     ForEach(0..<existingRecipes.count, id: \.self){
-                        idx in Button(
-                            action: {
-                                
-                            },
-                            label:{
-                                HStack{
-                                    Text(localdb.recipies[idx].recipeName)
-                                    
-                                }
+                        idx in
+                            NavigationLink(destination: RecipeInformationView(recipe: existingRecipes[idx])){
+                                Text(existingRecipes[idx].recipeName)
                             }
-                        )
                     }
                 }
-                Spacer()
             }
+            Spacer()
         }
     }
 }
