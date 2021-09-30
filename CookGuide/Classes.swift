@@ -165,11 +165,6 @@ class IngredientObject: Object {
     
     @Persisted var _id = UUID().uuidString
     
-    convenience override init(){
-        self.init()
-        ingredient = ""
-        recipeID = ""
-    }
     
     convenience init(ingredient: String, recipeID: String){
         self.init()
@@ -194,14 +189,6 @@ class InstructionObject: Object {
     @Persisted var _id = UUID().uuidString
     
     
-    convenience override init(){
-        self.init()
-        instruction = ""
-        hasTimer = false
-        timerDuration = 0
-        recipeID = "";
-    }
-    
     convenience init(instruction: String, hasTimer: Bool, timerDuration: Int, recipeID: String){
         self.init()
         self.instruction = instruction
@@ -224,14 +211,6 @@ class RecipeObject: Object {
     //@Persisted var ingredients: [IngredientObject]()
     //@Persisted var instructions: [InstructionObject]()
     @Persisted(primaryKey: true) var _id: ObjectId
-    
-    convenience override init(){
-        self.init()
-        recipeName = "name"
-        userID = ""
-        //self.ingredients = [IngredientObject]()
-        //self.instructions = [InstructionObject]()
-    }
     
     /*
     convenience init(recipeName: String, ingredients: [IngredientObject](), instructions: [InstructionObject]()){
