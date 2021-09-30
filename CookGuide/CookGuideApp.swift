@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-var app = RealmSwift.App(id: REALM_ID)
+let app = RealmSwift.App(id: REALM_ID)
 
 @main
 struct CookGuideApp: SwiftUI.App {

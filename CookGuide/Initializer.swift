@@ -11,8 +11,9 @@ import SwiftUI
 
 
 func createTestData() -> Array<RecipeObject>{
-    var testRecipies = [RecipeObject](repeating: RecipeObject(), count: 5)
     
+    var testRecipies = [RecipeObject](repeating: RecipeObject(), count: 5)
+    /*
     let recipeNames = ["Meatloaf", "Spagetti and meatballs", "chicken stew", "chocolate chip cookies", "baked potato"]
     let allIngredients: [[String]] =
     [
@@ -74,6 +75,8 @@ func createTestData() -> Array<RecipeObject>{
     }
     
     localdb.recipies = testRecipies
+     */
     return testRecipies
+     
 }
 

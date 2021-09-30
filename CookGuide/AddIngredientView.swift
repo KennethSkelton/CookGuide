@@ -47,7 +47,7 @@ struct AddIngredientView: View {
                         onCommit: {
                             //var id = UUID()
                             //temp._id = id.uuidString
-                            existingIngredients.append(IngredientObject(ingredient: tempIngredient))
+                            existingIngredients.append(IngredientObject(ingredient: tempIngredient, recipeID: "1"))
                             tempIngredient = ""
                         })
                     

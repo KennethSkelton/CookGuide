@@ -21,15 +21,16 @@ struct RecipeInformationView: View {
             }
             Spacer()
             Text("Ingredients")
-            List(){
+            List(){/*
                 ForEach(0..<recipe.ingredients.count, id: \.self){
                     idx in
                     Text(recipe.ingredients[idx].ingredient)
                 }
+                    */
             }
             Spacer()
             Text("Instructions")
-            List(){
+            List(){/*
                 ForEach(0..<recipe.instructions.count, id: \.self){
                     idx in
                     HStack{
@@ -37,6 +38,7 @@ struct RecipeInformationView: View {
                         Text("timer: \(recipe.instructions[idx].timerDuration)")
                     }
                 }
+                */
             }
         }
     }
