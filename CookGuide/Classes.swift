@@ -71,8 +71,12 @@ func saveRealmArray(_ objects: [Object]) {
 
 @objcMembers class IngredientObject: Object, ObjectKeyIdentifiable {
     
-    dynamic var ingredient: String = ""
+    dynamic var ingredient: String
     dynamic var _id = UUID().uuidString
+    
+    init(ingredient: String){
+        self.ingredient = ingredient
+    }
     
     override static func primaryKey() -> String? {
         return "_id"
@@ -83,9 +87,16 @@ func saveRealmArray(_ objects: [Object]) {
 @objcMembers class InstructionObject: Object, ObjectKeyIdentifiable {
     
     dynamic var instruction: String = ""
-    dynamic var _id = UUID().uuidString
     dynamic var hasTimer: Bool = false
     dynamic var timerDuration: Int = 0;
+    dynamic var _id = UUID().uuidString
+    
+    init(instruction: String, hasTimer: Bool, timerDuration: Int){
+        self.instruction = instruction
+        self.hasTimer = hasTimer
+        self.timerDuration = timerDuration
+    }
+    
     
     override static func primaryKey() -> String? {
         return "_id"
@@ -95,10 +106,16 @@ func saveRealmArray(_ objects: [Object]) {
 
 @objcMembers class RecipeObject: Object, ObjectKeyIdentifiable {
     
-    dynamic var recipeName = "Default"
-    dynamic var ingredients = [IngredientObject]()
-    dynamic var instructions = [InstructionObject]()
+    dynamic var recipeName: String
+    dynamic var ingredients: [IngredientObject]
+    dynamic var instructions: [InstructionObject]
     dynamic var _id = UUID().uuidString
+    
+    init(recipeName: String, ingredients: [IngredientObject], instructions: [InstructionObject]){
+        self.recipeName = recipeName
+        self.ingredients = ingredients
+        self.instructions = instructions
+    }
     
     override static func primaryKey() -> String? {
         return "_id"
