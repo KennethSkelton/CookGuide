@@ -74,6 +74,7 @@ func login(username: String, password: String){
 }
 
 func onLogin() {
+    print("on login")
     // Now logged in, do something with user
     let user = app.currentUser!
     // The partition determines which subset of data to access.
@@ -88,6 +89,7 @@ func onLogin() {
             // Handle error...
         case .success(let realm):
             // Realm opened
+            print("on login close")
             onRealmOpened(realm)
         }
     }
@@ -95,7 +97,7 @@ func onLogin() {
 
 func onRealmOpened(_ realm: Realm) {
     // Get all tasks in the realm
-    let tasks = realm.objects(IngredientObject.self)
+    print("Realm open")
     
     // Delete all from the realm
     /*
@@ -115,8 +117,8 @@ func onRealmOpened(_ realm: Realm) {
         realm.add(anotherTask)
     }
     // You can also filter a collection
-    let tasksThatBeginWithA = tasks.filter("name beginsWith 'A'")
-    print("A list of all tasks that begin with A: \(tasksThatBeginWithA)")
+    /*let tasksThatBeginWithA = tasks.filter("name beginsWith 'A'")
+    print("A list of all tasks that begin with A: \(tasksThatBeginWithA)")*/
     // All modifications to a realm must happen in a write block.
     /*let taskToUpdate = tasks[0]
     try! realm.write {
@@ -137,6 +139,7 @@ func onRealmOpened(_ realm: Realm) {
     app.currentUser?.logOut { (error) in
         // Logged out or error occurred
     }
+    print("realm close")
 }
 
 

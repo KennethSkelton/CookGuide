@@ -36,9 +36,10 @@ struct LoginView: View {
                             
                             },
                             label: {
+                                Text("Login")
                             }
                         )
-                        Text("Login")
+                        
                         
                     }
                     NavigationLink(destination: HomeView(username: username)){
