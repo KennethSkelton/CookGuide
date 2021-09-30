@@ -21,7 +21,22 @@ struct AddInstructionView: View {
                 Text("Please enter the instructions of your recipe")
                 List(){
                     ForEach(0..<existingInstructions.count, id: \.self){
-                        idx in Text(existingInstructions[idx].instruction)
+                        idx in
+                        HStack{
+                            Spacer()
+                            Text(existingInstructions[idx].instruction)
+                            Spacer()
+                            Button(
+                                action: {
+                                    existingInstructions.remove(at: idx)
+                                },
+                                
+                                label:{
+                                    Text("Remove").opacity(0.5).accentColor(.gray)
+                                }
+                            )
+                            Spacer()
+                        }
                     }
                 }
             VStack{
@@ -31,9 +46,7 @@ struct AddInstructionView: View {
                         "Intruction",
                         text: $tempInstruction
                        )
-                    
-                }
-                HStack{
+                    Spacer()
                     Text("Timer: ")
                     TextField(
                         "Time",
@@ -60,6 +73,8 @@ struct AddInstructionView: View {
                 NavigationLink(destination: Home()){
                     Button(
                         action: {
+                            
+                            //Database here
                             localdb.recipies.append(RecipeObject(recipeName: "temp", ingredients: ingredients, instructions: existingInstructions))
                         },
                         label: {

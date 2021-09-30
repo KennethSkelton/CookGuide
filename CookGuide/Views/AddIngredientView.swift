@@ -20,7 +20,22 @@ struct AddIngredientView: View {
                 Text("Please enter the ingredients of your recipe")
                 List(){
                     ForEach(0..<existingIngredients.count, id: \.self){
-                        idx in Text(existingIngredients[idx].ingredient)
+                        idx in
+                        HStack{
+                            Spacer()
+                            Text(existingIngredients[idx].ingredient)
+                            Spacer()
+                            Button(
+                                action: {
+                                    existingIngredients.remove(at: idx)
+                                },
+                                
+                                label:{
+                                    Text("Remove").opacity(0.5).accentColor(.gray)
+                                }
+                            )
+                            Spacer()
+                        }
                     }
                 }
                 HStack{

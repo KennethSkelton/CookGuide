@@ -74,6 +74,10 @@ class IngredientObject {
     dynamic var ingredient: String
     dynamic var _id = UUID().uuidString
     
+    init(){
+        ingredient = ""
+    }
+    
     init(ingredient: String){
         self.ingredient = ingredient
     }
@@ -91,6 +95,12 @@ class InstructionObject {
     dynamic var timerDuration: Int = 0;
     dynamic var _id = UUID().uuidString
     
+    init(){
+        instruction = ""
+        hasTimer = false
+        timerDuration = 0
+    }
+    
     init(instruction: String, hasTimer: Bool, timerDuration: Int){
         self.instruction = instruction
         self.hasTimer = hasTimer
@@ -107,17 +117,17 @@ class InstructionObject {
 class RecipeObject {
     
     dynamic var recipeName: String
-    dynamic var ingredients: [IngredientObject?]
-    dynamic var instructions: [InstructionObject?]
+    dynamic var ingredients: [IngredientObject]
+    dynamic var instructions: [InstructionObject]
     dynamic var _id = UUID().uuidString
     
     init(){
         self.recipeName = "name"
-        self.ingredients = [nil]
-        self.instructions = [nil]
+        self.ingredients = [IngredientObject]()
+        self.instructions = [InstructionObject]()
     }
     
-    init(recipeName: String, ingredients: [IngredientObject?], instructions: [InstructionObject?]){
+    init(recipeName: String, ingredients: [IngredientObject], instructions: [InstructionObject]){
         self.recipeName = recipeName
         self.ingredients = ingredients
         self.instructions = instructions

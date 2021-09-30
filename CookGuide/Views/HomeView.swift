@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 
-struct Home: View {
+struct HomeView: View {
     
     
     
@@ -49,6 +49,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        HomeView()
     }
 }

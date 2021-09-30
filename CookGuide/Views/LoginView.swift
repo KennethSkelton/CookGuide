@@ -22,10 +22,11 @@ struct LoginView: View {
                     "Password",
                     text: $password
                 )
-                NavigationLink(destination: Home(username: username)){
+                NavigationLink(destination: HomeView(username: username)){
                     Button(
                         action: {
                         print("Login button press")
+                        //Login
                         //app = login(username: username, password: password)
                         print("Login button end")
                         
@@ -36,10 +37,11 @@ struct LoginView: View {
                     Text("Login")
                     
                 }
-                NavigationLink(destination: Home()){
+                NavigationLink(destination: HomeView(username: username)){
                     Button(
                         action: {
                         print("Signup button press")
+                        //signup
                         //signup(username: username, password: password)
                         print("Signup button end")
                         

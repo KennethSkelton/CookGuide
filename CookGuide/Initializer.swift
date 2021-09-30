@@ -51,19 +51,19 @@ func createTestData() -> Array<RecipeObject>{
     ]
     
     
-    var ingredients = [[IngredientObject?]](repeating: [IngredientObject](), count: 5)
-    var instructions = [[InstructionObject?]](repeating: [InstructionObject](), count: 5)
+    var ingredients = [[IngredientObject]](repeating: [IngredientObject](), count: 5)
+    var instructions = [[InstructionObject]](repeating: [InstructionObject](), count: 5)
  
     
     for i in 0...allIngredients.count-1{
-        ingredients[i] = [IngredientObject?](repeating: nil, count: allIngredients[i].count)
+        ingredients[i] = [IngredientObject](repeating: IngredientObject(), count: allIngredients[i].count)
         for j in 0...allIngredients[i].count-1{
             ingredients[i][j] = IngredientObject(ingredient: allIngredients[i][j])
         }
     }
     
     for i in 0...instructionInstructions.count-1{
-        instructions[i] = [InstructionObject?](repeating: nil, count: instructionInstructions[i].count)
+        instructions[i] = [InstructionObject](repeating: InstructionObject(), count: instructionInstructions[i].count)
         for j in 0...instructionInstructions[i].count-1{
             instructions[i][j] = InstructionObject(instruction: instructionInstructions[i][j], hasTimer: instructionHasTimer[i][j], timerDuration: instructionTimerDuration[i][j])
         }
