@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F23277E2707EB4200F2D82D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F23277D2707EB4200F2D82D /* Functions.swift */; };
+		9F2327822707EE6200F2D82D /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2327812707EE6200F2D82D /* AddRecipeView.swift */; };
 		9F499F8D27062A2C00F17D08 /* RecipeInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */; };
 		9F499F9027063E4300F17D08 /* EditRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F499F8F27063E4300F17D08 /* EditRecipeView.swift */; };
 		9F59EB1326FD169000D72492 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59EB1226FD169000D72492 /* AppState.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F23277D2707EB4200F2D82D /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		9F2327812707EE6200F2D82D /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
 		9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInformationView.swift; sourceTree = "<group>"; };
 		9F499F8F27063E4300F17D08 /* EditRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecipeView.swift; sourceTree = "<group>"; };
 		9F59EB1226FD169000D72492 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -95,6 +99,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F2327832708168C00F2D82D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F59EB1826FD1D5500D72492 /* LoginView.swift */,
+				9F6C002926EA524C00689AA7 /* HomeView.swift */,
+				9F499F8F27063E4300F17D08 /* EditRecipeView.swift */,
+				9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */,
+				9FFD916926F38FD000DD1E83 /* AddIngredientView.swift */,
+				9FFD917426F3FA1B00DD1E83 /* AddInstructionView.swift */,
+				9F2327812707EE6200F2D82D /* AddRecipeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		9F6C001B26EA524C00689AA7 = {
 			isa = PBXGroup;
 			children = (
@@ -119,16 +137,12 @@
 		9F6C002626EA524C00689AA7 /* CookGuide */ = {
 			isa = PBXGroup;
 			children = (
-				9F6C002926EA524C00689AA7 /* HomeView.swift */,
-				9F499F8F27063E4300F17D08 /* EditRecipeView.swift */,
-				9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */,
-				9FFD917426F3FA1B00DD1E83 /* AddInstructionView.swift */,
-				9FFD916926F38FD000DD1E83 /* AddIngredientView.swift */,
-				9F59EB1826FD1D5500D72492 /* LoginView.swift */,
+				9F2327832708168C00F2D82D /* Views */,
 				9F6C002726EA524C00689AA7 /* CookGuideApp.swift */,
 				9F59EB1226FD169000D72492 /* AppState.swift */,
 				9F82B79526F13DAE0066B81B /* Initializer.swift */,
 				9FFD917026F3CC2400DD1E83 /* Classes.swift */,
+				9F23277D2707EB4200F2D82D /* Functions.swift */,
 				9FFD917226F3D5CB00DD1E83 /* Constants.swift */,
 				9F6C002B26EA524D00689AA7 /* Assets.xcassets */,
 				9F6C003026EA524D00689AA7 /* Info.plist */,
@@ -301,6 +315,7 @@
 			files = (
 				9F6C002A26EA524C00689AA7 /* HomeView.swift in Sources */,
 				9F6C002826EA524C00689AA7 /* CookGuideApp.swift in Sources */,
+				9F2327822707EE6200F2D82D /* AddRecipeView.swift in Sources */,
 				9FFD917526F3FA1B00DD1E83 /* AddInstructionView.swift in Sources */,
 				9F499F8D27062A2C00F17D08 /* RecipeInformationView.swift in Sources */,
 				9F59EB1326FD169000D72492 /* AppState.swift in Sources */,
@@ -310,6 +325,7 @@
 				9FFD916A26F38FD000DD1E83 /* AddIngredientView.swift in Sources */,
 				9F59EB1926FD1D5500D72492 /* LoginView.swift in Sources */,
 				9FFD917326F3D5CB00DD1E83 /* Constants.swift in Sources */,
+				9F23277E2707EB4200F2D82D /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

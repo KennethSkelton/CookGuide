@@ -14,9 +14,9 @@ struct AddInstructionView: View {
     @State var existingInstructions = [InstructionObject]()
     @State var tempInstruction = ""
     @State var textTempTimer = "";
+    @State var recipe = RecipeObject()
     
     var body: some View {
-        NavigationView {
             VStack{
                 Text("Please enter the instructions of your recipe")
                 List(){
@@ -84,7 +84,6 @@ struct AddInstructionView: View {
                     Text("Submit")
                 }
             }
-        }
     }
 }
 

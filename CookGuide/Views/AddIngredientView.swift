@@ -13,10 +13,12 @@ struct AddIngredientView: View {
     
     @State var existingIngredients = [IngredientObject]()
     @State var tempIngredient = ""
+    @State var isLinkActive = false
+    var recipe = RecipeObject()
     
     var body: some View {
-        NavigationView {
             VStack{
+                Text(recipe.recipeName)
                 Text("Please enter the ingredients of your recipe")
                 List(){
                     ForEach(0..<existingIngredients.count, id: \.self){
@@ -45,14 +47,12 @@ struct AddIngredientView: View {
                         "Ingredient",
                         text: $tempIngredient,
                         onCommit: {
-                            //var id = UUID()
-                            //temp._id = id.uuidString
-                            existingIngredients.append(IngredientObject(ingredient: tempIngredient, recipeID: "1"))
+                            existingIngredients.append(IngredientObject(ingredient: tempIngredient, recipeID: recipe.recipeID))
                             tempIngredient = ""
                         })
                     
                 }
-                NavigationLink(destination: AddInstructionView(ingredients: existingIngredients)){
+                NavigationLink(destination: AddInstructionView(ingredients: existingIngredients, recipe: recipe)){
                     Button(
                         action: {
                         //saveRealmArray(existingIngredients)
@@ -63,7 +63,6 @@ struct AddIngredientView: View {
                     Text("Submit")
                 }
             }
-        }
     }
 }
 

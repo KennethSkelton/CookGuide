@@ -18,7 +18,7 @@ struct HomeView: View {
     
     
     var body: some View {
-        NavigationView{
+
             VStack{
                 Text("Hello " + username)
                 
@@ -43,7 +43,7 @@ struct HomeView: View {
                 }
             }
             Spacer()
-        }
+
     }
 }
 
