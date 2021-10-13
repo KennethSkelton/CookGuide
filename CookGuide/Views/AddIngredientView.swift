@@ -52,15 +52,19 @@ struct AddIngredientView: View {
                         })
                     
                 }
-                NavigationLink(destination: AddInstructionView(ingredients: existingIngredients, recipe: recipe)){
+                NavigationLink(destination: AddInstructionView(recipe: recipe)){
                     Button(
                         action: {
-                        //saveRealmArray(existingIngredients)
+                            saveRealmArray(existingIngredients)
+                            for ingredient in existingIngredients {
+                                localdb.ingredients.append(ingredient)
+                            }
                         },
                         label: {
+                            Text("Save")
                         }
                     )
-                    Text("Submit")
+                    Text("Continue")
                 }
             }
     }

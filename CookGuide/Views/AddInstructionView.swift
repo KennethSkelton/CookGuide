@@ -9,8 +9,6 @@ import SwiftUI
 
 struct AddInstructionView: View {
     
-    var ingredients = [IngredientObject]()
-    
     @State var existingInstructions = [InstructionObject]()
     @State var tempInstruction = ""
     @State var textTempTimer = "";
@@ -45,7 +43,7 @@ struct AddInstructionView: View {
                     TextField(
                         "Intruction",
                         text: $tempInstruction
-                       )
+                    )
                     Spacer()
                     Text("Timer: ")
                     TextField(
@@ -57,10 +55,10 @@ struct AddInstructionView: View {
                     action: {
                         let intTimer: Int? = Int(textTempTimer)
                         if(intTimer ?? 0 > 0){
-                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: true, timerDuration: intTimer ?? 0, recipeID: "1"))
+                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: true, timerDuration: intTimer ?? 0, recipeID: recipe.recipeID))
                         }
                         else{
-                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: false, timerDuration: 0, recipeID: "1"))
+                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: false, timerDuration: 0, recipeID: recipe.recipeID))
                         }
                         textTempTimer = "";
                         tempInstruction = "";
@@ -75,13 +73,24 @@ struct AddInstructionView: View {
                         action: {
                             
                             //Database here
-                            localdb.recipies.append(RecipeObject(recipeName: "temp", userID: "1"))
+                            var i:Int = 1
+                            for instruction in existingInstructions {
+                                instruction.order = i;
+                                i+=1;
+                                localdb.instructions.append(instruction)
+                            }
+                            
+                            localdb.recipies.append(recipe)
+                            saveRealmObject(recipe)
+                            saveRealmArray(existingInstructions)
+                            
                         },
                         label: {
-                            
+                            Text("save")
                         }
                     )
-                    Text("Submit")
+                    
+                    Text("continue")
                 }
             }
     }

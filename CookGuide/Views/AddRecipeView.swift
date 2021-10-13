@@ -17,7 +17,6 @@ struct AddRecipeView: View {
     
     
     var body: some View {
-        NavigationView{
             VStack{
                 HStack{
                     Text("Recipe Name")
@@ -38,7 +37,6 @@ struct AddRecipeView: View {
                 }
                         
             }
-        }
     }
 }
 

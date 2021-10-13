@@ -38,6 +38,7 @@ class InstructionObject: Object {
     @Persisted var hasTimer: Bool
     @Persisted var timerDuration: Int
     @Persisted var recipeID: String
+    @Persisted var order: Int
     
     @Persisted var _id = UUID().uuidString
     
@@ -118,6 +119,8 @@ public protocol Persistable {
 struct localDatabase {
     
     var recipies = [RecipeObject]()
+    var instructions = [InstructionObject]()
+    var ingredients = [IngredientObject]()
     var user: User = User()
 }
 

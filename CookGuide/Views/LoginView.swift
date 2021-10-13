@@ -13,7 +13,6 @@ struct LoginView: View {
     @State var password = ""
     var body: some View {
         VStack{
-            Text("hello world")
         
             NavigationView {
                 VStack{
@@ -39,6 +38,7 @@ struct LoginView: View {
                                 Text("Login")
                             }
                         )
+                        Text("Login")
                         
                         
                     }

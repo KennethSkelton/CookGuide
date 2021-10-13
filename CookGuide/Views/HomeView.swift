@@ -13,7 +13,7 @@ struct HomeView: View {
     
     
     
-    @State var existingRecipes = createTestData()
+    @State var existingRecipes = localdb.recipies
     var username = ""
     
     
@@ -26,7 +26,7 @@ struct HomeView: View {
                     Text("My Recipes")
                         .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         
-                            NavigationLink(destination: AddIngredientView()){
+                            NavigationLink(destination: AddRecipeView()){
                                 Text("+").font(.system(size:60))
                                     .frame(width: 50, height: 50)
                                     .border(Color.black)
