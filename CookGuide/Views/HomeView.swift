@@ -11,9 +11,6 @@ import RealmSwift
 
 struct HomeView: View {
     
-    
-    
-    @State var existingRecipes = localdb.recipies
     var username = ""
     
     
@@ -34,10 +31,10 @@ struct HomeView: View {
                 }
                 Spacer()
                 List(){
-                    ForEach(0..<existingRecipes.count, id: \.self){
+                    ForEach(0..<localdb.recipies.count, id: \.self){
                         idx in
-                            NavigationLink(destination: RecipeInformationView(recipe: existingRecipes[idx])){
-                                Text(existingRecipes[idx].recipeName)
+                            NavigationLink(destination: RecipeInformationView(recipe: localdb.recipies[idx])){
+                                Text(localdb.recipies[idx].recipeName)
                             }
                     }
                 }
