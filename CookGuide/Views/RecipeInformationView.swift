@@ -21,24 +21,26 @@ struct RecipeInformationView: View {
             }
             Spacer()
             Text("Ingredients")
-            List(){/*
-                ForEach(0..<recipe.ingredients.count, id: \.self){
+            List(){
+                ForEach(0..<localdb.ingredients.count, id: \.self){
                     idx in
-                    Text(recipe.ingredients[idx].ingredient)
+                    if(localdb.ingredients[idx].recipeID == recipe.recipeID){
+                        Text(localdb.ingredients[idx].ingredient)
+                        
+                    }
                 }
-                    */
             }
             Spacer()
             Text("Instructions")
-            List(){/*
-                ForEach(0..<recipe.instructions.count, id: \.self){
+            List(){
+                ForEach(0..<localdb.instructions.count, id: \.self){
                     idx in
-                    HStack{
-                        Text(recipe.instructions[idx].instruction)
-                        Text("timer: \(recipe.instructions[idx].timerDuration)")
+                    if(localdb.instructions[idx].recipeID == recipe.recipeID){
+                        Text(localdb.instructions[idx].instruction)
+                        
                     }
                 }
-                */
+                
             }
         }
     }
