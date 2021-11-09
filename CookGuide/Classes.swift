@@ -65,7 +65,7 @@ class RecipeObject: Object {
     @Persisted var recipeID = UUID().uuidString
     //@Persisted var ingredients: [IngredientObject]()
     //@Persisted var instructions: [InstructionObject]()
-    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted(primaryKey: true) var _id = UUID().uuidString
     
     /*
     convenience init(recipeName: String, ingredients: [IngredientObject](), instructions: [InstructionObject]()){
@@ -86,7 +86,7 @@ class RecipeObject: Object {
     }
 }
 
-class User: Object, ObjectKeyIdentifiable {
+class User: Object {
     @Persisted(primaryKey: true) var _id = UUID().uuidString
     @Persisted var partition = "" // "user=_id"
     @Persisted var userName = ""
@@ -118,10 +118,10 @@ public protocol Persistable {
 
 struct localDatabase {
     
-    var recipies = [RecipeObject]()
+    var recipes = [RecipeObject]()
     var instructions = [InstructionObject]()
     var ingredients = [IngredientObject]()
-    var user: User = User()
+    var user: Any?
 }
 
-var localdb = localDatabase()
+

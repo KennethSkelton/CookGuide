@@ -5,6 +5,9 @@
 //  Created by Kenneth Skelton on 9/23/21.
 //
 
+/*Depreciated, not needed anymore*/
+
+
 import SwiftUI
 import RealmSwift
 

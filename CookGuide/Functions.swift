@@ -70,6 +70,7 @@ func login(username: String, password: String){
 func onLogin(){
     // Now logged in, do something with user
     let user = app.currentUser!
+    print("From within onLogin",state.isLoggedIn())
     // The partition determines which subset of data to access.
     let partitionValue = INGREDIENT_PARTITION_VALUE
     // Get a sync configuration from the user object.
@@ -84,6 +85,7 @@ func onLogin(){
         case .success(let realm):
             // Realm opened
             print("Realm Opened")
+            
             
             
             // BY COMMENTING THIS OUT WE DONT CLOSE THE CONNECTION
@@ -187,3 +189,30 @@ func saveRealmArray(_ objects: [Object]) {
         }
     }
 }
+
+/*
+func queryAllUsers() -> Any{
+    var response: Any = 0
+    let user = app.currentUser!
+    // The partition determines which subset of data to access.
+    let partitionValue = INGREDIENT_PARTITION_VALUE
+    // Get a sync configuration from the user object.
+    var configuration = user.configuration(partitionValue: partitionValue)
+    
+    Realm.asyncOpen(configuration: configuration) { (result) in
+        switch result {
+        case .failure(let error):
+            print("Failed to open realm: \(error.localizedDescription)")
+            // Handle error...
+        case .success(let realm):
+            // Realm opened
+            print("Realm Opened")
+            try! realm.write {
+                response = realm.objects(User.self)
+            }
+        
+        }
+    }
+    return response
+}
+*/

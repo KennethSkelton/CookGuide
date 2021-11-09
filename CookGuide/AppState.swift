@@ -21,9 +21,15 @@ class AppState: ObservableObject {
 
     var user: User?
 
-    var loggedIn: Bool {
-        app.currentUser != nil && user != nil && app.currentUser?.state == .loggedIn
+    func isLoggedIn() -> Bool {
+        return app.currentUser != nil && app.currentUser?.state == .loggedIn
     }
+    
+    func isNotLoggedIn() -> Bool{
+        return !isLoggedIn()
+    }
+    
+
 
     init() {
         _  = app.currentUser?.logOut()

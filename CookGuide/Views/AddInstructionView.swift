@@ -80,10 +80,9 @@ struct AddInstructionView: View {
                                 localdb.instructions.append(instruction)
                             }
                             
-                            localdb.recipies.append(recipe)
+                            localdb.recipes.append(recipe)
                             saveRealmObject(recipe)
                             saveRealmArray(existingInstructions)
-                            
                         },
                         label: {
                             Text("save")

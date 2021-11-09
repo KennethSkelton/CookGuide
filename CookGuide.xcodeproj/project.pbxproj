@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F07CE0A273B0C7800325BE1 /* colors_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F07CE09273B0C7800325BE1 /* colors_2.swift */; };
 		9F23277E2707EB4200F2D82D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F23277D2707EB4200F2D82D /* Functions.swift */; };
 		9F2327822707EE6200F2D82D /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2327812707EE6200F2D82D /* AddRecipeView.swift */; };
 		9F499F8D27062A2C00F17D08 /* RecipeInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F07CE09273B0C7800325BE1 /* colors_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colors_2.swift; sourceTree = "<group>"; };
 		9F23277D2707EB4200F2D82D /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		9F2327812707EE6200F2D82D /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
 		9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInformationView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F07CE08273B0C4800325BE1 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				9F07CE09273B0C7800325BE1 /* colors_2.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		9F2327832708168C00F2D82D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +147,7 @@
 		9F6C002626EA524C00689AA7 /* CookGuide */ = {
 			isa = PBXGroup;
 			children = (
+				9F07CE08273B0C4800325BE1 /* Styles */,
 				9F2327832708168C00F2D82D /* Views */,
 				9F6C002726EA524C00689AA7 /* CookGuideApp.swift */,
 				9F59EB1226FD169000D72492 /* AppState.swift */,
@@ -325,6 +336,7 @@
 				9FFD916A26F38FD000DD1E83 /* AddIngredientView.swift in Sources */,
 				9F59EB1926FD1D5500D72492 /* LoginView.swift in Sources */,
 				9FFD917326F3D5CB00DD1E83 /* Constants.swift in Sources */,
+				9F07CE0A273B0C7800325BE1 /* colors_2.swift in Sources */,
 				9F23277E2707EB4200F2D82D /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

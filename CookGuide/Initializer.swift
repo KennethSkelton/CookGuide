@@ -9,74 +9,87 @@ import Foundation
 import RealmSwift
 import SwiftUI
 
+var localdb = localDatabase()
 
-func createTestData() -> Array<RecipeObject>{
+func initilizeDatabase(){
     
-    var testRecipies = [RecipeObject](repeating: RecipeObject(), count: 5)
-    /*
-    let recipeNames = ["Meatloaf", "Spagetti and meatballs", "chicken stew", "chocolate chip cookies", "baked potato"]
-    let allIngredients: [[String]] =
-    [
-        ["Bread","ground meat","Egg","Onion","Bell pepper"],
-        ["Spagetti noodles", "tomato sauce", "onion", "ground meat", "red pepper flakes"],
-        ["Chicken breast", "chicken broth", "bell peppers", "onion", "carrots"],
-        ["flour", "eggs", "sugar", "milk", "chocolate chips", "vanilla extract", "salt", "baking powder","Butter"],
-        ["potato", "butter"]
-    ]
+    localdb.user = app.currentUser
+    print("Local DB user", localdb.user)
     
-    let instructionInstructions: [[String]] =
-    [
-        ["Combine ingredients", "bake for 1 hour at 350"],
-        ["Put in pot with water", "boil for 20 minutes", "put in onion and tomato sauce", "mold the ground meat into balls", "cook the meat at 350 for 10 minutes"],
-        ["combine dry ingredients in a bowl", "combine wet ingredients in a seperate bowl", "mix untill uniform consistancy", "bake for 15 minutes at 375 degrees farenheit"],
-        ["cut chicken into small pieces", "put all ingredients in pot at 300 degrees farenheit for 30 minutes"],
-        ["potato + butter", "in oven for 10 minutes at 400 degrees farenheit"]
-    ]
-    
-    let instructionHasTimer: [[Bool]] =
-    [
-        [false, true],
-        [false, true, false, false, true],
-        [false, false, false, true],
-        [false, true],
-        [false, true]
-    ]
-    
-    let instructionTimerDuration: [[Int]] =
-    [
-        [0,60],
-        [0,20,0,0,10],
-        [0,0,0,15],
-        [0,30],
-        [0,10]
-    ]
-    
-    
-    var ingredients = [[IngredientObject]](repeating: [IngredientObject](), count: 5)
-    var instructions = [[InstructionObject]](repeating: [InstructionObject](), count: 5)
- 
-    
-    for i in 0...allIngredients.count-1{
-        ingredients[i] = [IngredientObject](repeating: IngredientObject(), count: allIngredients[i].count)
-        for j in 0...allIngredients[i].count-1{
-            ingredients[i][j] = IngredientObject(ingredient: allIngredients[i][j])
-        }
-    }
-    
-    for i in 0...instructionInstructions.count-1{
-        instructions[i] = [InstructionObject](repeating: InstructionObject(), count: instructionInstructions[i].count)
-        for j in 0...instructionInstructions[i].count-1{
-            instructions[i][j] = InstructionObject(instruction: instructionInstructions[i][j], hasTimer: instructionHasTimer[i][j], timerDuration: instructionTimerDuration[i][j])
-        }
-    }
-    
-    for i in 0...recipeNames.count-1{
-        testRecipies[i] = RecipeObject(recipeName: recipeNames[i], ingredients: ingredients[i], instructions: instructions[i])
-    }
-    
-    localdb.recipies = testRecipies
-     */
-    return testRecipies
-     
+    setAllRecipes()
+    setAllIngredients()
+    setAllInstructions()
 }
+
+func setAllRecipes(){
+    
+    let user = app.currentUser!
+    // The partition determines which subset of data to access.
+    let partitionValue = INGREDIENT_PARTITION_VALUE
+    // Get a sync configuration from the user object.
+    var configuration = user.configuration(partitionValue: partitionValue)
+    
+    Realm.asyncOpen(configuration: configuration) { (result) in
+        switch result {
+        case .failure(let error):
+            print("Failed to open realm: \(error.localizedDescription)")
+            // Handle error...
+        case .success(let realm):
+            // Realm opened
+            print("Realm Opened")
+            for recipe in realm.objects(RecipeObject.self){
+                localdb.recipes.append(recipe)
+            }
+        }
+    }
+}
+
+func setAllIngredients(){
+    
+    let user = app.currentUser!
+    // The partition determines which subset of data to access.
+    let partitionValue = INGREDIENT_PARTITION_VALUE
+    // Get a sync configuration from the user object.
+    var configuration = user.configuration(partitionValue: partitionValue)
+    
+    Realm.asyncOpen(configuration: configuration) { (result) in
+        switch result {
+        case .failure(let error):
+            print("Failed to open realm: \(error.localizedDescription)")
+            // Handle error...
+        case .success(let realm):
+            // Realm opened
+            print("Realm Opened")
+            for ingredient in realm.objects(IngredientObject.self){
+                localdb.ingredients.append(ingredient)
+            }
+        }
+    }
+}
+
+func setAllInstructions(){
+    
+    let user = app.currentUser!
+    // The partition determines which subset of data to access.
+    let partitionValue = INGREDIENT_PARTITION_VALUE
+    // Get a sync configuration from the user object.
+    var configuration = user.configuration(partitionValue: partitionValue)
+    
+    Realm.asyncOpen(configuration: configuration) { (result) in
+        switch result {
+        case .failure(let error):
+            print("Failed to open realm: \(error.localizedDescription)")
+            // Handle error...
+        case .success(let realm):
+            // Realm opened
+            print("Realm Opened")
+            for instruction in realm.objects(InstructionObject.self){
+                localdb.instructions.append(instruction)
+            }
+        }
+    }
+}
+
+
+
 
