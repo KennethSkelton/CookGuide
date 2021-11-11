@@ -12,17 +12,22 @@ struct AddInstructionView: View {
     @State var existingInstructions = [InstructionObject]()
     @State var tempInstruction = ""
     @State var textTempTimer = "";
+    @State var linkIsActive = false
     @State var recipe = RecipeObject()
     
     var body: some View {
             VStack{
+                Spacer()
                 Text("Please enter the instructions of your recipe")
+                    .padding()
                 List(){
                     ForEach(0..<existingInstructions.count, id: \.self){
                         idx in
                         HStack{
-                            Spacer()
+                            
                             Text(existingInstructions[idx].instruction)
+                                .font(.system(size:20, weight: .light))
+                                .padding(10)
                             Spacer()
                             Button(
                                 action: {
@@ -30,26 +35,45 @@ struct AddInstructionView: View {
                                 },
                                 
                                 label:{
-                                    Text("Remove").opacity(0.5).accentColor(.gray)
+                                    Text("Remove")
+                                        .opacity(0.8)
+                                        .foregroundColor(.red)
                                 }
                             )
-                            Spacer()
+                                .padding(10)
+                            
                         }
                     }
                 }
             VStack{
                 HStack{
                     Text("Instruction: ")
+                        .font(.system(size: 15))
                     TextField(
-                        "Intruction",
+                        " Instruction",
                         text: $tempInstruction
-                    )
+                        )
+                        .overlay(
+                            Capsule()
+                                .stroke(lineWidth: 1)
+                                .opacity(0.7)
+                        )
+                        .font(.system(size: 15))
                     Spacer()
                     Text("Timer: ")
+                        .font(.system(size: 15))
                     TextField(
-                        "Time",
+                        " Time",
                         text: $textTempTimer
-                       )
+                        )
+                        .overlay(
+                            Capsule()
+                                .stroke(lineWidth: 1)
+                                .opacity(0.7)
+                        )
+                        .padding(10)
+                        .font(.system(size: 15))
+                    
                 }
                 Button(
                     action: {
@@ -64,11 +88,18 @@ struct AddInstructionView: View {
                         tempInstruction = "";
                     },
                     label: {
+                        ZStack{
+                        RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 240, height: 30)
+                                .foregroundColor(secondaryColor)
                         Text("Submit Instruction")
+                            .foregroundColor(secondaryTextColor)
+                        }
+                        .padding(8)
                     }
                 )
             }
-                NavigationLink(destination: HomeView()){
+                NavigationLink(destination: HomeView(), isActive: $linkIsActive){
                     Button(
                         action: {
                             
@@ -83,15 +114,24 @@ struct AddInstructionView: View {
                             localdb.recipes.append(recipe)
                             saveRealmObject(recipe)
                             saveRealmArray(existingInstructions)
+                            linkIsActive = true
                         },
                         label: {
-                            Text("save")
+                            ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 240, height: 30)
+                                    .foregroundColor(secondaryColor)
+                            Text("Complete Recipe")
+                                .foregroundColor(secondaryTextColor)
+                            }
+                            .padding(8)
                         }
                     )
-                    
-                    Text("continue")
                 }
             }
+            .background(primaryColor).ignoresSafeArea()
+            .navigationTitle("")
+            .navigationBarHidden(true)
     }
 }
 

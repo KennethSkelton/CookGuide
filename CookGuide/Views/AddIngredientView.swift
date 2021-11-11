@@ -13,19 +13,25 @@ struct AddIngredientView: View {
     
     @State var existingIngredients = [IngredientObject]()
     @State var tempIngredient = ""
-    @State var isLinkActive = false
+    @State var linkIsActive = false
     var recipe = RecipeObject()
     
     var body: some View {
             VStack{
+                Spacer()
                 Text(recipe.recipeName)
+                    .font(.system(size:30, weight: .light))
+                    .padding()
                 Text("Please enter the ingredients of your recipe")
+                    .font(.system(size:15, weight: .light))
+                    .padding()
                 List(){
                     ForEach(0..<existingIngredients.count, id: \.self){
                         idx in
                         HStack{
-                            Spacer()
                             Text(existingIngredients[idx].ingredient)
+                                .font(.system(size:20, weight: .light))
+                                .padding()
                             Spacer()
                             Button(
                                 action: {
@@ -33,40 +39,61 @@ struct AddIngredientView: View {
                                 },
                                 
                                 label:{
-                                    Text("Remove").opacity(0.5).accentColor(.gray)
+                                    Text("Remove")
+                                        .opacity(0.8)
+                                        .foregroundColor(.red)
                                 }
                             )
-                            Spacer()
+                                .padding()
                         }
                     }
+                    .background(primaryColor).ignoresSafeArea()
+                    .listStyle(.plain)
                 }
                 HStack{
                     Text("Ingredient: ")
-                    
                     TextField(
-                        "Ingredient",
+                        "  Ingredient",
                         text: $tempIngredient,
                         onCommit: {
                             existingIngredients.append(IngredientObject(ingredient: tempIngredient, recipeID: recipe.recipeID))
                             tempIngredient = ""
                         })
+                        .overlay(
+                            Capsule()
+                                .stroke(lineWidth: 1)
+                                .opacity(0.7)
+                        )
+                        .padding(10)
                     
                 }
-                NavigationLink(destination: AddInstructionView(recipe: recipe)){
+                .padding()
+                NavigationLink(destination: AddInstructionView(recipe: recipe), isActive: $linkIsActive){
                     Button(
                         action: {
                             saveRealmArray(existingIngredients)
                             for ingredient in existingIngredients {
                                 localdb.ingredients.append(ingredient)
                             }
+                            linkIsActive = true
                         },
                         label: {
-                            Text("Save")
+                            ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 240, height: 30)
+                                    .foregroundColor(secondaryColor)
+                            Text("Continue to Instructions")
+                                .foregroundColor(secondaryTextColor)
+                            }
+                            .padding()
                         }
                     )
-                    Text("Continue")
                 }
+            Spacer()
             }
+            .background(primaryColor).ignoresSafeArea()
+            .navigationTitle("")
+            .navigationBarHidden(true)
     }
 }
 

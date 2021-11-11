@@ -11,8 +11,8 @@ import RealmSwift
 
 struct HomeView: View {
     
-    @State var username = "Kenny@skeltons.com"
-    @State var password = "Kennys"
+    @State var username = ""
+    @State var password = ""
     @State var isNotLoggedin = !state.isLoggedIn()
     @State var recipes = localdb.recipes
     var body: some View {
@@ -31,31 +31,39 @@ struct HomeView: View {
                         ForEach(0..<recipes.count, id: \.self){
                             idx in
                             NavigationLink(destination: RecipeInformationView(recipe: recipes[idx])){
-                                ZStack{
-                                    Text(recipes[idx].recipeName)
-                                        .font(.system(size:20, weight: .light))
-                                        
-                                }
+                                
+                                Text(recipes[idx].recipeName)
+                                    .font(.system(size:20, weight: .light))
+                                    
+                                
                             }
                         }
                         
                     }
                     .background(primaryColor).ignoresSafeArea()
+                    .listStyle(.plain)
                 }
                 .background(primaryColor).ignoresSafeArea()
                 .navigationTitle("")
                 .navigationBarHidden(true)
                 
-                NavigationLink(destination: AddRecipeView()){
-                    ZStack{
-                        Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(secondaryColor)
-                        Text("+").foregroundColor(secondaryTextColor).font(.system(size: 30))
-                    }.padding(30)
+                
+                VStack{
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        NavigationLink(destination: AddRecipeView()){
+                            ZStack{
+                                Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(secondaryColor)
+                                Text("+").foregroundColor(secondaryTextColor).font(.system(size: 30))
+                            }.padding(30)
+                        }
+                        .frame(width: 50, height: 50)
+                        .padding(30)
+                    }
                 }
-                .frame(width: 50, height: 50)
             }
         }
-        /*
         .popover(isPresented: $isNotLoggedin){
                 VStack{
                     Spacer()
@@ -142,7 +150,7 @@ struct HomeView: View {
                     )
                     Spacer()
                 }.background(primaryColor).ignoresSafeArea()
-        }*/
+        }
     }
 }
 

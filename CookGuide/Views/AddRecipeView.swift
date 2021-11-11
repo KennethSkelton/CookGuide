@@ -21,16 +21,16 @@ struct AddRecipeView: View {
                 Spacer()
                 Text("Name Your Recipe")
                 HStack{
+                    Spacer()
                     Text("Recipe Name")
-                    TextField(
-                        " Name",text: $recipeName
-                    )
+                    TextField(" Name",text: $recipeName)
                         .overlay(
                             Capsule()
                                 .stroke(lineWidth: 1)
                                 .opacity(0.7)
                         )
-                        .padding(10)
+                        .padding(5)
+                    Spacer()
                 }
                 NavigationLink(destination: AddIngredientView(recipe: recipe), isActive: $linkIsActive){
                     Button(

@@ -43,6 +43,9 @@ struct RecipeInformationView: View {
                 
             }
         }
+        .background(primaryColor).ignoresSafeArea()
+        .navigationTitle("")
+        .navigationBarHidden(true)
     }
 }
 
