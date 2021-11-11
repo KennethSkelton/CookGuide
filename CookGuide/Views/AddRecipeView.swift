@@ -18,25 +18,43 @@ struct AddRecipeView: View {
     
     var body: some View {
             VStack{
+                Spacer()
+                Text("Name Your Recipe")
                 HStack{
                     Text("Recipe Name")
                     TextField(
-                        "name",
-                        text: $recipeName
-
+                        " Name",text: $recipeName
                     )
+                        .overlay(
+                            Capsule()
+                                .stroke(lineWidth: 1)
+                                .opacity(0.7)
+                        )
+                        .padding(10)
                 }
                 NavigationLink(destination: AddIngredientView(recipe: recipe), isActive: $linkIsActive){
-                    Button(action: {
+                    Button(
+                        action: {
                         recipe = RecipeObject(recipeName: recipeName, userID: app.currentUser?.id ?? "None")
                         linkIsActive = true
-                    },
-                        label: {Text("Submit")
+                        },
+                        label: {
+                            ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 80, height: 30)
+                                    .foregroundColor(secondaryColor)
+                            Text("Submit")
+                                .foregroundColor(secondaryTextColor)
+                            }
                         
-                    })
+                        }
+                    )
                 }
+                Spacer()
                         
             }
+            .background(primaryColor).ignoresSafeArea()
+                
     }
 }
 

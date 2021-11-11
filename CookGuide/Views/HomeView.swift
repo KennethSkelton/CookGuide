@@ -11,8 +11,8 @@ import RealmSwift
 
 struct HomeView: View {
     
-    @State var username = ""
-    @State var password = ""
+    @State var username = "Kenny@skeltons.com"
+    @State var password = "Kennys"
     @State var isNotLoggedin = !state.isLoggedIn()
     @State var recipes = localdb.recipes
     var body: some View {
@@ -31,50 +31,48 @@ struct HomeView: View {
                         ForEach(0..<recipes.count, id: \.self){
                             idx in
                             NavigationLink(destination: RecipeInformationView(recipe: recipes[idx])){
-                                Text(recipes[idx].recipeName)
-                                    .font(.system(size:20, weight: .light))
-                                    
-                            }.background(secondaryColor)
+                                ZStack{
+                                    Text(recipes[idx].recipeName)
+                                        .font(.system(size:20, weight: .light))
+                                        
+                                }
+                            }
                         }
-                    }.background(primaryColor).ignoresSafeArea()
+                        
+                    }
+                    .background(primaryColor).ignoresSafeArea()
                 }
                 .background(primaryColor).ignoresSafeArea()
                 .navigationTitle("")
                 .navigationBarHidden(true)
                 
                 NavigationLink(destination: AddRecipeView()){
-                    VStack{
-                        Spacer()
-                        HStack{
-                            Spacer()
-                            ZStack{
-                                Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(secondaryColor)
-                                Text("+").foregroundColor(secondaryTextColor).font(.system(size: 30))
-                            }.padding(30)
-                                
-                        }
-                    }
-                }.frame(alignment: .bottomTrailing)
-                
+                    ZStack{
+                        Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(secondaryColor)
+                        Text("+").foregroundColor(secondaryTextColor).font(.system(size: 30))
+                    }.padding(30)
+                }
+                .frame(width: 50, height: 50)
             }
         }
+        /*
         .popover(isPresented: $isNotLoggedin){
                 VStack{
                     Spacer()
-                    Spacer()
+                    Text("Welcome to CookGuide")
+                        .font(.system(size: 30))
                     Text("Login")
                         .font(.system(size: 30))
-                    Spacer()
                     TextField(
                         " UserName",
                         text: $username
                     )
                         .overlay(
-                        Capsule()
-                            .stroke(lineWidth: 1)
-                            .opacity(0.7)
+                            Capsule()
+                                .stroke(lineWidth: 1)
+                                .opacity(0.7)
                         )
-                        .padding()
+                        .padding(10)
                     
                     TextField(
                         " Password",
@@ -85,7 +83,7 @@ struct HomeView: View {
                                 .stroke(lineWidth: 1)
                                 .opacity(0.7)
                         )
-                        .padding(5)
+                        .padding(10)
                     
                     Button(
                         action: {
@@ -144,7 +142,7 @@ struct HomeView: View {
                     )
                     Spacer()
                 }.background(primaryColor).ignoresSafeArea()
-        }
+        }*/
     }
 }
 
