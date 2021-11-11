@@ -17,42 +17,76 @@ struct HomeView: View {
     @State var recipes = localdb.recipes
     var body: some View {
         NavigationView {
-            VStack{
-                HStack{
-                    Text("My Recipes")
-                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        
-                            NavigationLink(destination: AddRecipeView()){
-                                Text("+").font(.system(size:60))
-                                    .frame(width: 50, height: 50)
-                                    .border(Color.black)
-                                    
-                            }
-                }
-                Spacer()
-                List(){
-                    ForEach(0..<recipes.count, id: \.self){
-                        idx in
-                        NavigationLink(destination: RecipeInformationView(recipe: recipes[idx])){
-                                Text(recipes[idx].recipeName)
-                            }
+            ZStack{
+                VStack{
+                    HStack{
+                        Text("My Recipes")
+                            .frame(height: 100, alignment: .center)
+                            .background(primaryColor)
+                            .font(.system(size:30, weight: .light, design: .serif))
+                            
                     }
-                }.border(primaryColor)
-            }.background(primaryColor)
+                    Spacer()
+                    List(){
+                        ForEach(0..<recipes.count, id: \.self){
+                            idx in
+                            NavigationLink(destination: RecipeInformationView(recipe: recipes[idx])){
+                                Text(recipes[idx].recipeName)
+                                    .font(.system(size:20, weight: .light))
+                                    
+                            }.background(secondaryColor)
+                        }
+                    }.background(primaryColor).ignoresSafeArea()
+                }
+                .background(primaryColor).ignoresSafeArea()
+                .navigationTitle("")
+                .navigationBarHidden(true)
+                
+                NavigationLink(destination: AddRecipeView()){
+                    VStack{
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            ZStack{
+                                Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(secondaryColor)
+                                Text("+").foregroundColor(secondaryTextColor).font(.system(size: 30))
+                            }.padding(30)
+                                
+                        }
+                    }
+                }.frame(alignment: .bottomTrailing)
+                
+            }
         }
         .popover(isPresented: $isNotLoggedin){
                 VStack{
                     Spacer()
-                    Text("Login or Register")
+                    Spacer()
+                    Text("Login")
+                        .font(.system(size: 30))
+                    Spacer()
                     TextField(
-                        "UserName",
+                        " UserName",
                         text: $username
                     )
+                        .overlay(
+                        Capsule()
+                            .stroke(lineWidth: 1)
+                            .opacity(0.7)
+                        )
+                        .padding()
                     
                     TextField(
-                        "Password",
+                        " Password",
                         text: $password
                     )
+                        .overlay(
+                            Capsule()
+                                .stroke(lineWidth: 1)
+                                .opacity(0.7)
+                        )
+                        .padding(5)
+                    
                     Button(
                         action: {
                             print("Login button press")
@@ -72,7 +106,14 @@ struct HomeView: View {
                             
                         },
                         label: {
+                            ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 80, height: 30)
+                                    .foregroundColor(secondaryColor)
                             Text("Login")
+                                .foregroundColor(secondaryTextColor)
+                            }
+                            
                         }
                     )
                 
@@ -92,11 +133,17 @@ struct HomeView: View {
                             }
                         },
                         label: {
+                            ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 80, height: 30)
+                                    .foregroundColor(secondaryColor)
                             Text("Register")
+                                .foregroundColor(secondaryTextColor)
+                            }
                         }
                     )
                     Spacer()
-                }.background(primaryColor)
+                }.background(primaryColor).ignoresSafeArea()
         }
     }
 }
