@@ -32,7 +32,7 @@ class AppState: ObservableObject {
 
 
     init() {
-        _  = app.currentUser?.logOut()
+        
         initLoginPublisher()
         initUserRealmPublisher()
         initLogoutPublisher()

@@ -163,6 +163,29 @@ func saveRealmObject(_ object: Object) {
     }
 }
 
+func updateRealmObject(_ object: Object) {
+    
+    let user = app.currentUser!
+    // The partition determines which subset of data to access.
+    let partitionValue = INGREDIENT_PARTITION_VALUE
+    // Get a sync configuration from the user object.
+    var configuration = user.configuration(partitionValue: partitionValue)
+    // Open the realm asynchronously to ensure backend data is downloaded first.
+    Realm.asyncOpen(configuration: configuration) { (result) in
+        switch result {
+        case .failure(let error):
+            print("Failed to open realm: \(error.localizedDescription)")
+            // Handle error...
+        case .success(let realm):
+            // Realm opened
+            print("Realm Opened")
+            try! realm.write {
+                realm.add(object, update: .modified)
+            }
+        }
+    }
+}
+
 
 func saveRealmArray(_ objects: [Object]) {
     
@@ -184,6 +207,32 @@ func saveRealmArray(_ objects: [Object]) {
             for object in objects{
                try! realm.write {
                    realm.add(object)
+               }
+            }
+        }
+    }
+}
+
+func updateRealmArray(_ objects: [Object]) {
+    
+    let user = app.currentUser!
+    // The partition determines which subset of data to access.
+    let partitionValue = INGREDIENT_PARTITION_VALUE
+    // Get a sync configuration from the user object.
+    var configuration = user.configuration(partitionValue: partitionValue)
+    // Open the realm asynchronously to ensure backend data is downloaded first.
+    Realm.asyncOpen(configuration: configuration) { (result) in
+        switch result {
+        case .failure(let error):
+            print("Failed to open realm: \(error.localizedDescription)")
+            // Handle error...
+        case .success(let realm):
+            // Realm opened
+            print("Realm Opened")
+    
+            for object in objects{
+               try! realm.write {
+                   realm.add(object, update: .modified)
                }
             }
         }

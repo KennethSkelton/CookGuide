@@ -9,7 +9,11 @@ import SwiftUI
 
 struct RecipeInformationView: View {
     
-    var recipe = RecipeObject()
+    @State var recipe = RecipeObject()
+    @State var ingredients = [IngredientObject]()
+    @State var instructions = [InstructionObject]()
+    
+    @State var instructionTimerStrings = [String]()
     
     var body: some View {
         VStack{
@@ -22,26 +26,33 @@ struct RecipeInformationView: View {
             Spacer()
             Text("Ingredients")
             List(){
-                ForEach(0..<localdb.ingredients.count, id: \.self){
+                ForEach(0..<ingredients.count, id: \.self){
                     idx in
-                    if(localdb.ingredients[idx].recipeID == recipe.recipeID){
-                        Text(localdb.ingredients[idx].ingredient)
-                        
-                    }
+                    TextEditor(text: $ingredients[idx].ingredient)
                 }
             }
             Spacer()
             Text("Instructions")
             List(){
-                ForEach(0..<localdb.instructions.count, id: \.self){
+                ForEach(0..<instructions.count, id: \.self){
                     idx in
-                    if(localdb.instructions[idx].recipeID == recipe.recipeID){
-                        Text(localdb.instructions[idx].instruction)
-                        
+                    HStack{
+                        TextEditor(text: $instructions[idx].instruction)
+                        TextEditor(text: $instructionTimerStrings[idx])
                     }
                 }
                 
             }
+            Button(
+                action: {
+                    
+                    
+                
+            },
+                label: {
+                    Text("Save")
+            })
+            Button(action: {}, label: {})
         }
         .background(primaryColor).ignoresSafeArea()
         .navigationTitle("")

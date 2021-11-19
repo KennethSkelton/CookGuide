@@ -9,11 +9,13 @@ import SwiftUI
 
 struct AddInstructionView: View {
     
+    @State var recipe = RecipeObject()
     @State var existingInstructions = [InstructionObject]()
+    @State var existingIngredients = [IngredientObject]()
     @State var tempInstruction = ""
     @State var textTempTimer = "";
     @State var linkIsActive = false
-    @State var recipe = RecipeObject()
+    
     
     var body: some View {
             VStack{
@@ -108,12 +110,7 @@ struct AddInstructionView: View {
                             for instruction in existingInstructions {
                                 instruction.order = i;
                                 i+=1;
-                                localdb.instructions.append(instruction)
                             }
-                            
-                            localdb.recipes.append(recipe)
-                            saveRealmObject(recipe)
-                            saveRealmArray(existingInstructions)
                             linkIsActive = true
                         },
                         label: {

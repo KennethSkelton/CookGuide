@@ -68,13 +68,9 @@ struct AddIngredientView: View {
                     
                 }
                 .padding()
-                NavigationLink(destination: AddInstructionView(recipe: recipe), isActive: $linkIsActive){
+                NavigationLink(destination: AddInstructionView(recipe: recipe, existingIngredients: existingIngredients), isActive: $linkIsActive){
                     Button(
                         action: {
-                            saveRealmArray(existingIngredients)
-                            for ingredient in existingIngredients {
-                                localdb.ingredients.append(ingredient)
-                            }
                             linkIsActive = true
                         },
                         label: {

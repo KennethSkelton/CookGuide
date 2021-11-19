@@ -1,0 +1,3 @@
+[submodule "CookGuide.xcodeproj/HTMLKit"]
+	path = CookGuide.xcodeproj/HTMLKit
+	url = https://github.com/iabudiab/HTMLKit.git

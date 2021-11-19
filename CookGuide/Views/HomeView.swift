@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import HTMLKit
 
 
 struct HomeView: View {
@@ -15,6 +16,12 @@ struct HomeView: View {
     @State var password = ""
     @State var isNotLoggedin = !state.isLoggedIn()
     @State var recipes = localdb.recipes
+    @State var linkIsActive = false
+    
+    
+    @State var tempIngredients = [IngredientObject]()
+    @State var tempInstructions = [InstructionObject]()
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -30,12 +37,29 @@ struct HomeView: View {
                     List(){
                         ForEach(0..<recipes.count, id: \.self){
                             idx in
-                            NavigationLink(destination: RecipeInformationView(recipe: recipes[idx])){
-                                
-                                Text(recipes[idx].recipeName)
-                                    .font(.system(size:20, weight: .light))
-                                    
-                                
+                            NavigationLink(destination: RecipeInformationView(recipe: recipes[idx], ingredients: tempIngredients, instructions: tempInstructions, instructionTimerStrings: tempInstructions.map { String($0.timerDuration) }), isActive: $linkIsActive){
+                                Button(
+                                    action: {
+                                        
+                                        for i in 0..<localdb.ingredients.count{
+                                            if(localdb.ingredients[i].recipeID == recipes[i].recipeID){
+                                                tempIngredients.append(localdb.ingredients[i])
+                                            }
+                                        }
+                                        
+                                        for i in 0..<localdb.instructions.count{
+                                            if(localdb.instructions[i].recipeID == recipes[i].recipeID){
+                                                tempInstructions.append(localdb.instructions[i])
+                                            }
+                                        }
+                                        
+                                        linkIsActive = true
+                                    },
+                                    label: {
+                                        Text(recipes[idx].recipeName)
+                                            .font(.system(size:20, weight: .light))
+                                    }
+                                )
                             }
                         }
                         

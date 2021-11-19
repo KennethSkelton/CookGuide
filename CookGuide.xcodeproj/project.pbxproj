@@ -10,6 +10,9 @@
 		9F07CE0A273B0C7800325BE1 /* colors_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F07CE09273B0C7800325BE1 /* colors_2.swift */; };
 		9F23277E2707EB4200F2D82D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F23277D2707EB4200F2D82D /* Functions.swift */; };
 		9F2327822707EE6200F2D82D /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2327812707EE6200F2D82D /* AddRecipeView.swift */; };
+		9F33F5D6274458E00020BFC8 /* HTMLKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F33F5D5274458E00020BFC8 /* HTMLKit */; };
+		9F33F5DF27445B250020BFC8 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9F33F5DE27445B250020BFC8 /* Realm */; };
+		9F33F5E127445B250020BFC8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9F33F5E027445B250020BFC8 /* RealmSwift */; };
 		9F499F8D27062A2C00F17D08 /* RecipeInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */; };
 		9F499F9027063E4300F17D08 /* EditRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F499F8F27063E4300F17D08 /* EditRecipeView.swift */; };
 		9F59EB1326FD169000D72492 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59EB1226FD169000D72492 /* AppState.swift */; };
@@ -21,9 +24,10 @@
 		9F6C003A26EA524D00689AA7 /* CookGuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C003926EA524D00689AA7 /* CookGuideTests.swift */; };
 		9F6C004526EA524E00689AA7 /* CookGuideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C004426EA524E00689AA7 /* CookGuideUITests.swift */; };
 		9F82B79626F13DAE0066B81B /* Initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F82B79526F13DAE0066B81B /* Initializer.swift */; };
+		9FC680BD27457545002027E4 /* WebParserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC680BC27457545002027E4 /* WebParserView.swift */; };
+		9FC680BF274575EA002027E4 /* WebParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC680BE274575EA002027E4 /* WebParser.swift */; };
+		9FD157EC2746DB9700909764 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 9FD157EB2746DB9700909764 /* SwiftSoup */; };
 		9FFD916A26F38FD000DD1E83 /* AddIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD916926F38FD000DD1E83 /* AddIngredientView.swift */; };
-		9FFD916D26F3CBA700DD1E83 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9FFD916C26F3CBA700DD1E83 /* Realm */; };
-		9FFD916F26F3CBA700DD1E83 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FFD916E26F3CBA700DD1E83 /* RealmSwift */; };
 		9FFD917126F3CC2400DD1E83 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD917026F3CC2400DD1E83 /* Classes.swift */; };
 		9FFD917326F3D5CB00DD1E83 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD917226F3D5CB00DD1E83 /* Constants.swift */; };
 		9FFD917526F3FA1B00DD1E83 /* AddInstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD917426F3FA1B00DD1E83 /* AddInstructionView.swift */; };
@@ -68,6 +72,8 @@
 		9F6C004626EA524E00689AA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F6C005226EA53FF00689AA7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9F82B79526F13DAE0066B81B /* Initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializer.swift; sourceTree = "<group>"; };
+		9FC680BC27457545002027E4 /* WebParserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebParserView.swift; sourceTree = "<group>"; };
+		9FC680BE274575EA002027E4 /* WebParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebParser.swift; sourceTree = "<group>"; };
 		9FFD916926F38FD000DD1E83 /* AddIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientView.swift; sourceTree = "<group>"; };
 		9FFD917026F3CC2400DD1E83 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		9FFD917226F3D5CB00DD1E83 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -79,8 +85,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FFD916F26F3CBA700DD1E83 /* RealmSwift in Frameworks */,
-				9FFD916D26F3CBA700DD1E83 /* Realm in Frameworks */,
+				9F33F5E127445B250020BFC8 /* RealmSwift in Frameworks */,
+				9FD157EC2746DB9700909764 /* SwiftSoup in Frameworks */,
+				9F33F5DF27445B250020BFC8 /* Realm in Frameworks */,
+				9F33F5D6274458E00020BFC8 /* HTMLKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				9F59EB1826FD1D5500D72492 /* LoginView.swift */,
+				9FC680BC27457545002027E4 /* WebParserView.swift */,
 				9F6C002926EA524C00689AA7 /* HomeView.swift */,
 				9F499F8F27063E4300F17D08 /* EditRecipeView.swift */,
 				9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */,
@@ -155,6 +164,7 @@
 				9FFD917026F3CC2400DD1E83 /* Classes.swift */,
 				9F23277D2707EB4200F2D82D /* Functions.swift */,
 				9FFD917226F3D5CB00DD1E83 /* Constants.swift */,
+				9FC680BE274575EA002027E4 /* WebParser.swift */,
 				9F6C002B26EA524D00689AA7 /* Assets.xcassets */,
 				9F6C003026EA524D00689AA7 /* Info.plist */,
 				9F6C002D26EA524D00689AA7 /* Preview Content */,
@@ -205,8 +215,10 @@
 			);
 			name = CookGuide;
 			packageProductDependencies = (
-				9FFD916C26F3CBA700DD1E83 /* Realm */,
-				9FFD916E26F3CBA700DD1E83 /* RealmSwift */,
+				9F33F5D5274458E00020BFC8 /* HTMLKit */,
+				9F33F5DE27445B250020BFC8 /* Realm */,
+				9F33F5E027445B250020BFC8 /* RealmSwift */,
+				9FD157EB2746DB9700909764 /* SwiftSoup */,
 			);
 			productName = CookGuide;
 			productReference = 9F6C002426EA524C00689AA7 /* CookGuide.app */;
@@ -280,7 +292,9 @@
 			);
 			mainGroup = 9F6C001B26EA524C00689AA7;
 			packageReferences = (
-				9FFD916B26F3CBA700DD1E83 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				9F33F5D4274458E00020BFC8 /* XCRemoteSwiftPackageReference "HTMLKit" */,
+				9F33F5DD27445B250020BFC8 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				9FD157EA2746DB9700909764 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 9F6C002526EA524C00689AA7 /* Products */;
 			projectDirPath = "";
@@ -324,10 +338,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC680BD27457545002027E4 /* WebParserView.swift in Sources */,
 				9F6C002A26EA524C00689AA7 /* HomeView.swift in Sources */,
 				9F6C002826EA524C00689AA7 /* CookGuideApp.swift in Sources */,
 				9F2327822707EE6200F2D82D /* AddRecipeView.swift in Sources */,
 				9FFD917526F3FA1B00DD1E83 /* AddInstructionView.swift in Sources */,
+				9FC680BF274575EA002027E4 /* WebParser.swift in Sources */,
 				9F499F8D27062A2C00F17D08 /* RecipeInformationView.swift in Sources */,
 				9F59EB1326FD169000D72492 /* AppState.swift in Sources */,
 				9F499F9027063E4300F17D08 /* EditRecipeView.swift in Sources */,
@@ -659,26 +675,52 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9FFD916B26F3CBA700DD1E83 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+		9F33F5D4274458E00020BFC8 /* XCRemoteSwiftPackageReference "HTMLKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			repositoryURL = "https://github.com/iabudiab/HTMLKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.15.1;
+				minimumVersion = 4.2.0;
+			};
+		};
+		9F33F5DD27445B250020BFC8 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		9FD157EA2746DB9700909764 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9FFD916C26F3CBA700DD1E83 /* Realm */ = {
+		9F33F5D5274458E00020BFC8 /* HTMLKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9FFD916B26F3CBA700DD1E83 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = 9F33F5D4274458E00020BFC8 /* XCRemoteSwiftPackageReference "HTMLKit" */;
+			productName = HTMLKit;
+		};
+		9F33F5DE27445B250020BFC8 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F33F5DD27445B250020BFC8 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = Realm;
 		};
-		9FFD916E26F3CBA700DD1E83 /* RealmSwift */ = {
+		9F33F5E027445B250020BFC8 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9FFD916B26F3CBA700DD1E83 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = 9F33F5DD27445B250020BFC8 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		9FD157EB2746DB9700909764 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FD157EA2746DB9700909764 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
