@@ -16,7 +16,7 @@ struct CookGuideApp: SwiftUI.App {
     @StateObject var state = AppState()
     var body: some Scene {
         WindowGroup {
-            WebParserView()
+            HomeView()
                 .environmentObject(state)
         }
     }

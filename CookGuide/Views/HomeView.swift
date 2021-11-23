@@ -7,14 +7,13 @@
 
 import SwiftUI
 import RealmSwift
-import HTMLKit
 
 
 struct HomeView: View {
     
     @State var username = ""
     @State var password = ""
-    @State var isNotLoggedin = !state.isLoggedIn()
+    @State var isNotLoggedin = state.isLoggedIn()
     @State var recipes = localdb.recipes
     @State var linkIsActive = false
     

@@ -6,13 +6,13 @@
 //
 
 import Foundation
-import HTMLKit
 import WebKit
 import SwiftUI
 
 
-
+//Depreciated
 func findAllIngredients(){
+    /*
     let TestURL = "https://www.allrecipes.com/recipe/13477/double-layer-pumpkin-cheesecake/"
     
     print(TestURL)
@@ -48,7 +48,7 @@ func findAllIngredients(){
     }
     
     
-    
+    */
     
 }
 
