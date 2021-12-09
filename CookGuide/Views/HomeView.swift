@@ -11,8 +11,8 @@ import RealmSwift
 
 struct HomeView: View {
     
-    @State var username = ""
-    @State var password = ""
+    @State var username = "Kenny@skeltons.com"
+    @State var password = "Kennys"
     @State var isNotLoggedin = state.isLoggedIn()
     @State var recipes = localdb.recipes
     @State var linkIsActive = false

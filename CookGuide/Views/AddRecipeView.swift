@@ -13,6 +13,7 @@ struct AddRecipeView: View {
    
     @State var recipeName = ""
     @State var linkIsActive = false
+    @State var link2IsActive = false
     @State var recipe = RecipeObject()
     
     
@@ -44,6 +45,23 @@ struct AddRecipeView: View {
                                     .frame(width: 80, height: 30)
                                     .foregroundColor(secondaryColor)
                             Text("Submit")
+                                .foregroundColor(secondaryTextColor)
+                            }
+                        
+                        }
+                    )
+                }
+                NavigationLink(destination: WebParserView(), isActive: $link2IsActive){
+                    Button(
+                        action: {
+                        link2IsActive = true
+                        },
+                        label: {
+                            ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 160, height: 30)
+                                    .foregroundColor(secondaryColor)
+                            Text("Parse From Web")
                                 .foregroundColor(secondaryTextColor)
                             }
                         

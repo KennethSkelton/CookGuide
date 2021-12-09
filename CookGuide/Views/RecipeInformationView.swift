@@ -17,6 +17,7 @@ struct RecipeInformationView: View {
     
     var body: some View {
         VStack{
+            Spacer()
             HStack{
                 Text(recipe.recipeName)
                 NavigationLink(destination: EditRecipeView(recipe: recipe)){

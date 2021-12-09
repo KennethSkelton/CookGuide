@@ -16,10 +16,16 @@ struct WebParserView: View {
     @State var parsedIngredients = [String]()
     @State var parsedInstructions = [String]()
     
+    @State var parsedIngredientObjects = [IngredientObject]()
+    @State var parsedInstructionObjects = [InstructionObject]()
+    
+    @State var linkIsActive = false
+    
     
     var body: some View {
         VStack{
-            TextField("URL", text: $urlString)
+            Spacer()
+            TextField("https://www.allrecipes.com/recipe/ ...", text: $urlString)
                 .overlay(
                     Capsule()
                         .stroke(lineWidth: 1)
@@ -43,14 +49,27 @@ struct WebParserView: View {
                         let ingredients = try doc.getElementsByClass("ingredients-item-name")
                         
                         for i in 0..<ingredients.count{
-                            parsedIngredients[i] = try ingredients[i].text()
+                            parsedIngredients.append(try fractionReplacer(input: ingredients[i].text()))
+                            
+                            parsedIngredientObjects.append(IngredientObject(ingredient: parsedIngredients[i], recipeID: recipe.recipeID))
+                            
+                            localdb.ingredients.append(IngredientObject(ingredient: parsedIngredients[i], recipeID: recipe.recipeID))
                             
                         }
                         
                         let instructions = try doc.getElementsByClass("subcontainer instructions-section-item")
                         for i in 0..<instructions.count{
-                            parsedIngredients[i] = try instructions[i].text()
+                            parsedInstructions.append(try fractionReplacer(input: instructions[i].text()))
+                            
+                            parsedInstructionObjects.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: 0, order: i, recipeID: recipe.recipeID))
+                            
+                            localdb.instructions.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: 0, order: i, recipeID: recipe.recipeID))
                         }
+                        localdb.recipes.append(recipe)
+                        
+                        print(parsedIngredients)
+                        print(parsedInstructions)
+                        
                     }
                     catch {
                         print("Failure")
@@ -95,14 +114,31 @@ struct WebParserView: View {
                         
                     }
                 }
-                
             }
         }
         .background(primaryColor).ignoresSafeArea()
         .navigationTitle("")
         .navigationBarHidden(true)
         Spacer()
-        
+        NavigationLink(destination: HomeView(), isActive: $linkIsActive){
+            Button(
+                action: {
+                    saveRealmArray(parsedIngredientObjects)
+                    saveRealmArray(parsedInstructionObjects)
+                    saveRealmObject(recipe)
+                    linkIsActive = true
+            },
+                label: {
+                    ZStack{
+                    RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 80, height: 30)
+                            .foregroundColor(secondaryColor)
+                    Text("Save")
+                        .foregroundColor(secondaryTextColor)
+                    }
+                    .padding(8)
+            })
+        }
         
     }
 }

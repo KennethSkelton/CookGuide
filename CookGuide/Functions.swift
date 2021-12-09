@@ -239,6 +239,27 @@ func updateRealmArray(_ objects: [Object]) {
     }
 }
 
+func fractionReplacer(input: String) -> String{
+    var output = input
+    output = output.replacingOccurrences(of: "½", with: " one half ")
+    output = output.replacingOccurrences(of: "⅓", with: " one third ")
+    output = output.replacingOccurrences(of: "¼", with: " one fourth ")
+    output = output.replacingOccurrences(of: "⅕", with: " one fifth ")
+    output = output.replacingOccurrences(of: "⅙", with: " one sixth ")
+    output = output.replacingOccurrences(of: "⅐", with: " one seventh ")
+    output = output.replacingOccurrences(of: "⅛", with: " one eighth ")
+    output = output.replacingOccurrences(of: "⅑", with: " one ninth ")
+    output = output.replacingOccurrences(of: "⅒", with: " one tenth ")
+    output = output.replacingOccurrences(of: "⅔", with: " two thirds ")
+    output = output.replacingOccurrences(of: "¾", with: " three quarters ")
+    output = output.replacingOccurrences(of: "⅜", with: " three eighths ")
+    
+    return output
+}
+
+
+
+
 /*
 func queryAllUsers() -> Any{
     var response: Any = 0
