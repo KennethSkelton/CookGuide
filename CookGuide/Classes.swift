@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftUI
 
 var state = AppState()
 
@@ -100,6 +101,30 @@ class User: Object {
     }
 }
 
+class MealEventObject: Object {
+    @Persisted var recipeName: String
+    @Persisted var recipeID: String
+    @Persisted var dateString: String
+    @Persisted(primaryKey: true) var _id = UUID().uuidString
+    
+    convenience init(recipeID: String, dateString: String) {
+        self.init()
+        self.recipeID = recipeID
+        self.dateString = dateString
+        
+        for recipe in localdb.recipes {
+            if(recipe.recipeID == self.recipeID){
+                self.recipeName = recipe.recipeName
+            }
+        }
+    }
+    
+    
+    
+}
+
+
+
 enum Presence: String {
     case onLine = "On-Line"
     case offLine = "Off-Line"
@@ -122,6 +147,7 @@ struct localDatabase {
     var recipes = [RecipeObject]()
     var instructions = [InstructionObject]()
     var ingredients = [IngredientObject]()
+    var mealEvents = [MealEventObject]()
     var user: Any?
 }
 

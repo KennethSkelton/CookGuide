@@ -34,6 +34,9 @@ struct HomeView: View {
                     }
                     Spacer()
                     List(){
+                        if(recipes.count == 0){
+                            Text("You have no recipes")
+                        }
                         ForEach(0..<recipes.count, id: \.self){
                             idx in
                             NavigationLink(destination: RecipeInformationView(recipe: recipes[idx], ingredients: tempIngredients, instructions: tempInstructions, instructionTimerStrings: tempInstructions.map { String($0.timerDuration) }), isActive: $linkIsActive){
@@ -74,6 +77,17 @@ struct HomeView: View {
                 VStack{
                     Spacer()
                     HStack{
+                        NavigationLink(destination: ScheduleView()){
+                            ZStack{
+                                Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(secondaryColor)
+                                Image(systemName: "calendar")
+                                    
+                            }.padding(30)
+                        }
+                        .buttonStyle(.plain)
+                        .frame(width: 50, height: 50)
+                        .padding(30)
+                        
                         Spacer()
                         NavigationLink(destination: AddRecipeView()){
                             ZStack{

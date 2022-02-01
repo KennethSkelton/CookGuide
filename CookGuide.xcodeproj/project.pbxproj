@@ -14,6 +14,7 @@
 		9F33F5E127445B250020BFC8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9F33F5E027445B250020BFC8 /* RealmSwift */; };
 		9F499F8D27062A2C00F17D08 /* RecipeInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */; };
 		9F499F9027063E4300F17D08 /* EditRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F499F8F27063E4300F17D08 /* EditRecipeView.swift */; };
+		9F59939A279C54A500C0C226 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F599399279C54A500C0C226 /* ScheduleView.swift */; };
 		9F59EB1326FD169000D72492 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59EB1226FD169000D72492 /* AppState.swift */; };
 		9F59EB1926FD1D5500D72492 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59EB1826FD1D5500D72492 /* LoginView.swift */; };
 		9F6C002826EA524C00689AA7 /* CookGuideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C002726EA524C00689AA7 /* CookGuideApp.swift */; };
@@ -55,6 +56,7 @@
 		9F2327812707EE6200F2D82D /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
 		9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInformationView.swift; sourceTree = "<group>"; };
 		9F499F8F27063E4300F17D08 /* EditRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecipeView.swift; sourceTree = "<group>"; };
+		9F599399279C54A500C0C226 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		9F59EB1226FD169000D72492 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		9F59EB1826FD1D5500D72492 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9F6C002426EA524C00689AA7 /* CookGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,7 @@
 				9F59EB1826FD1D5500D72492 /* LoginView.swift */,
 				9FC680BC27457545002027E4 /* WebParserView.swift */,
 				9F6C002926EA524C00689AA7 /* HomeView.swift */,
+				9F599399279C54A500C0C226 /* ScheduleView.swift */,
 				9F499F8F27063E4300F17D08 /* EditRecipeView.swift */,
 				9F499F8C27062A2C00F17D08 /* RecipeInformationView.swift */,
 				9FFD916926F38FD000DD1E83 /* AddIngredientView.swift */,
@@ -341,6 +344,7 @@
 				9FFD917526F3FA1B00DD1E83 /* AddInstructionView.swift in Sources */,
 				9FC680BF274575EA002027E4 /* WebParser.swift in Sources */,
 				9F499F8D27062A2C00F17D08 /* RecipeInformationView.swift in Sources */,
+				9F59939A279C54A500C0C226 /* ScheduleView.swift in Sources */,
 				9F59EB1326FD169000D72492 /* AppState.swift in Sources */,
 				9F499F9027063E4300F17D08 /* EditRecipeView.swift in Sources */,
 				9F82B79626F13DAE0066B81B /* Initializer.swift in Sources */,
