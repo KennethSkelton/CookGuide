@@ -177,7 +177,7 @@ struct HomeView: View {
                             print("Signup button press")
                             //signup
                             signup(username: username, password: password)
-                            DispatchQueue.main.asyncAfter(deadline: .now()+1.5){
+                            DispatchQueue.main.asyncAfter(deadline: .now()+2.5){
                                 print("Signup button end")
                                 isNotLoggedin = !state.isLoggedIn()
                                 initilizeDatabase()

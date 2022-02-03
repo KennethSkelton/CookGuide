@@ -257,6 +257,51 @@ func fractionReplacer(input: String) -> String{
     return output
 }
 
+func updateLocalDatabaseRecipe(object: RecipeObject){
+    for element in localdb.recipes {
+        if(object._id == element._id){
+            if let index = localdb.recipes.firstIndex(of: element){
+                localdb.recipes[index] = object
+            }
+        }
+    }
+}
+
+func updateLocalDatabaseRecipeArray(objects: [RecipeObject]){
+    for object in objects{
+        for element in localdb.recipes {
+            if(object._id == element._id){
+                if let index = localdb.recipes.firstIndex(of: element){
+                    localdb.recipes[index] = object
+                }
+            }
+        }
+    }
+}
+func updateLocalDatabaseIngredientArray(objects: [IngredientObject]){
+    
+    for object in objects{
+        for element in localdb.ingredients {
+            if(object._id == element._id){
+                if let index = localdb.ingredients.firstIndex(of: element){
+                    localdb.ingredients[index] = object
+                }
+            }
+        }
+    }
+}
+func updateLocalDatabaseInstructionArray(objects: [InstructionObject]){
+    for object in objects{
+        for element in localdb.instructions {
+            if(object._id == element._id){
+                if let index = localdb.instructions.firstIndex(of: element){
+                    localdb.instructions[index] = object
+                }
+            }
+        }
+    }
+}
+
 
 
 

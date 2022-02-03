@@ -22,7 +22,7 @@ struct ScheduleView: View {
     
     let dateFormatter : DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, h:mm a"
+        formatter.dateFormat = "MMMM d, yyyy h:mm a"
         return formatter
     }();
     

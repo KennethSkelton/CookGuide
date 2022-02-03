@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RecipeInformationView: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var recipe = RecipeObject()
     @State var ingredients = [IngredientObject]()
     @State var instructions = [InstructionObject]()
@@ -20,9 +22,6 @@ struct RecipeInformationView: View {
             Spacer()
             HStack{
                 Text(recipe.recipeName)
-                NavigationLink(destination: EditRecipeView(recipe: recipe)){
-                    Text("Edit")
-                }
             }
             Spacer()
             Text("Ingredients")
@@ -46,24 +45,41 @@ struct RecipeInformationView: View {
             }
             Button(
                 action: {
+                updateLocalDatabaseRecipe(object: recipe)
+                updateLocalDatabaseIngredientArray(objects: ingredients)
+                updateLocalDatabaseInstructionArray(objects: instructions)
                     
+                updateRealmObject(recipe)
+                updateRealmArray(ingredients)
+                updateRealmArray(instructions)
                     
+                self.presentationMode.wrappedValue.dismiss()
                 
             },
                 label: {
                     Text("Save")
             })
-            Button(action: {}, label: {})
         }
         .background(primaryColor).ignoresSafeArea()
         .navigationTitle("")
         .navigationBarHidden(true)
-        .onAppear(perform: printStuff)
+        .onAppear(perform: fillData)
     }
-    private func printStuff() {
-        print(recipe)
-        print(ingredients)
-        print(instructions)
+    private func fillData() {
+        
+        for element in localdb.ingredients {
+            if(element.recipeID == recipe.recipeID){
+                ingredients.append(element)
+            }
+        }
+        
+        for element in localdb.instructions {
+            if(element.recipeID == recipe.recipeID){
+                instructions.append(element)
+                instructionTimerStrings.append(String(element.timerDuration))
+            }
+            
+        }
     }
 }
 

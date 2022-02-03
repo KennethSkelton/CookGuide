@@ -87,42 +87,57 @@ struct WebParserView: View {
                     
                 }
             )
-            HStack{
-                Text(recipe.recipeName)
-                NavigationLink(destination: EditRecipeView(recipe: recipe)){
-                    Text("Edit")
-                }
-            }
-            Spacer()
-            Text("Ingredients")
-            List(){
-                ForEach(0..<localdb.ingredients.count, id: \.self){
-                    idx in
-                    if(localdb.ingredients[idx].recipeID == recipe.recipeID){
-                        Text(localdb.ingredients[idx].ingredient)
-                        
-                    }
-                }
-            }
-            Spacer()
-            Text("Instructions")
-            List(){
-                ForEach(0..<localdb.instructions.count, id: \.self){
-                    idx in
-                    if(localdb.instructions[idx].recipeID == recipe.recipeID){
-                        Text(localdb.instructions[idx].instruction)
-                        
-                    }
-                }
-            }
         }
         .background(primaryColor).ignoresSafeArea()
         .navigationTitle("")
         .navigationBarHidden(true)
         Spacer()
-        NavigationLink(destination: HomeView(), isActive: $linkIsActive){
+        NavigationLink(destination: RecipeInformationView(recipe: recipe), isActive: $linkIsActive){
             Button(
                 action: {
+                    
+                    let url = URL(string: urlString)
+                    do {
+                        let html = try String(contentsOf: url!)
+                        let doc: Document = try SwiftSoup.parse(html)
+              
+                        
+                        
+                        let recipeName = try doc.getElementsByClass("headline heading-content elementFont__display").text()
+                        
+                        recipe = RecipeObject(recipeName: recipeName, userID: app.currentUser?.id ?? "None")
+                        
+                        let ingredients = try doc.getElementsByClass("ingredients-item-name")
+                        
+                        for i in 0..<ingredients.count{
+                            parsedIngredients.append(try fractionReplacer(input: ingredients[i].text()))
+                            
+                            parsedIngredientObjects.append(IngredientObject(ingredient: parsedIngredients[i], recipeID: recipe.recipeID))
+                            
+                            localdb.ingredients.append(IngredientObject(ingredient: parsedIngredients[i], recipeID: recipe.recipeID))
+                            
+                        }
+                        
+                        let instructions = try doc.getElementsByClass("subcontainer instructions-section-item")
+                        for i in 0..<instructions.count{
+                            parsedInstructions.append(try fractionReplacer(input: instructions[i].text()))
+                            
+                            parsedInstructionObjects.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: 0, order: i, recipeID: recipe.recipeID))
+                            
+                            localdb.instructions.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: 0, order: i, recipeID: recipe.recipeID))
+                        }
+                        localdb.recipes.append(recipe)
+                        
+                        print(parsedIngredients)
+                        print(parsedInstructions)
+                        
+                    }
+                    catch {
+                        print("Failure")
+                        
+                    }
+                    
+                    
                     saveRealmArray(parsedIngredientObjects)
                     saveRealmArray(parsedInstructionObjects)
                     saveRealmObject(recipe)
