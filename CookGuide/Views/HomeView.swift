@@ -39,11 +39,10 @@ struct HomeView: View {
                         }
                         ForEach(0..<recipes.count, id: \.self){
                             idx in
-                            NavigationLink(destination: RecipeInformationView(recipe: recipes[idx], ingredients: tempIngredients, instructions: tempInstructions, instructionTimerStrings: tempInstructions.map { String($0.timerDuration) }), isActive: $linkIsActive){
+                            NavigationLink(destination: RecipeInformationView(recipe: recipes[idx], ingredients: tempIngredients, instructions: tempInstructions, instructionTimerStrings: tempInstructions.map { String($0.timerDuration) })){
                                 Button(
                                     action: {
-                                        
-                                        for i in 0..<localdb.ingredients.count{
+                                       /* for i in 0..<localdb.ingredients.count{
                                             if(localdb.ingredients[i].recipeID == recipes[i].recipeID){
                                                 tempIngredients.append(localdb.ingredients[i])
                                             }
@@ -54,8 +53,7 @@ struct HomeView: View {
                                                 tempInstructions.append(localdb.instructions[i])
                                             }
                                         }
-                                        
-                                        linkIsActive = true
+                                        */
                                     },
                                     label: {
                                         Text(recipes[idx].recipeName)
@@ -89,6 +87,20 @@ struct HomeView: View {
                         .padding(30)
                         
                         Spacer()
+                        
+                        NavigationLink(destination: CartView()){
+                            ZStack{
+                                Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(secondaryColor)
+                                Image(systemName: "cart")
+                                    
+                            }.padding(30)
+                        }
+                        .buttonStyle(.plain)
+                        .frame(width: 50, height: 50)
+                        .padding(30)
+                        
+                        Spacer()
+                        
                         NavigationLink(destination: AddRecipeView()){
                             ZStack{
                                 Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(secondaryColor)

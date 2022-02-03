@@ -12,7 +12,7 @@ struct RecipeInformationView: View {
     @State var recipe = RecipeObject()
     @State var ingredients = [IngredientObject]()
     @State var instructions = [InstructionObject]()
-    
+
     @State var instructionTimerStrings = [String]()
     
     var body: some View {
@@ -58,6 +58,12 @@ struct RecipeInformationView: View {
         .background(primaryColor).ignoresSafeArea()
         .navigationTitle("")
         .navigationBarHidden(true)
+        .onAppear(perform: printStuff)
+    }
+    private func printStuff() {
+        print(recipe)
+        print(ingredients)
+        print(instructions)
     }
 }
 
