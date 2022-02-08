@@ -305,6 +305,9 @@ func updateLocalDatabaseInstructionArray(objects: [InstructionObject]){
 
 
 
+//Firebase function here
+
+
 /*
 func queryAllUsers() -> Any{
     var response: Any = 0
