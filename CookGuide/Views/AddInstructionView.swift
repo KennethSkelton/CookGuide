@@ -79,12 +79,12 @@ struct AddInstructionView: View {
                 }
                 Button(
                     action: {
-                        let intTimer: Int? = Int(textTempTimer)
-                        if(intTimer ?? 0 > 0){
-                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: true, timerDuration: intTimer ?? 0, recipeID: recipe.recipeID))
+                        let stringTimer: String = "PT"+textTempTimer+"M"
+                        if(stringTimer == "PTM"){
+                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: true, timerDuration: "PT0M", recipeID: recipe.recipeID))
                         }
                         else{
-                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: false, timerDuration: 0, recipeID: recipe.recipeID))
+                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: false, timerDuration: stringTimer, recipeID: recipe.recipeID))
                         }
                         textTempTimer = "";
                         tempInstruction = "";

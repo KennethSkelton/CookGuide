@@ -37,14 +37,14 @@ class InstructionObject: Object {
 
     @Persisted var instruction: String
     @Persisted var hasTimer: Bool
-    @Persisted var timerDuration: Int
+    @Persisted var timerDuration: String
     @Persisted var recipeID: String
     @Persisted var order: Int
     
     @Persisted var _id = UUID().uuidString
     
     
-    convenience init(instruction: String, hasTimer: Bool, timerDuration: Int, order:Int? = 0, recipeID: String){
+    convenience init(instruction: String, hasTimer: Bool, timerDuration: String, order:Int? = 0, recipeID: String){
         self.init()
         self.instruction = instruction
         self.hasTimer = hasTimer

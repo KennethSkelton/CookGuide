@@ -59,11 +59,15 @@ struct WebParserView: View {
                         
                         let instructions = try doc.getElementsByClass("subcontainer instructions-section-item")
                         for i in 0..<instructions.count{
+                            
+                            
                             parsedInstructions.append(try fractionReplacer(input: instructions[i].text()))
+
+                            var timerDuration = findTimerDuration(input: try instructions[i].text())
                             
-                            parsedInstructionObjects.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: 0, order: i, recipeID: recipe.recipeID))
+                            parsedInstructionObjects.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: timerDuration, order: i, recipeID: recipe.recipeID))
                             
-                            localdb.instructions.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: 0, order: i, recipeID: recipe.recipeID))
+                            localdb.instructions.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: timerDuration, order: i, recipeID: recipe.recipeID))
                         }
                         localdb.recipes.append(recipe)
                         
@@ -121,10 +125,12 @@ struct WebParserView: View {
                         let instructions = try doc.getElementsByClass("subcontainer instructions-section-item")
                         for i in 0..<instructions.count{
                             parsedInstructions.append(try fractionReplacer(input: instructions[i].text()))
+
+                            var timerDuration = findTimerDuration(input: try instructions[i].text())
                             
-                            parsedInstructionObjects.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: 0, order: i, recipeID: recipe.recipeID))
+                            parsedInstructionObjects.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: timerDuration, order: i, recipeID: recipe.recipeID))
                             
-                            localdb.instructions.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: 0, order: i, recipeID: recipe.recipeID))
+                            localdb.instructions.append(InstructionObject(instruction: parsedInstructions[i], hasTimer: false, timerDuration: timerDuration, order: i, recipeID: recipe.recipeID))
                         }
                         localdb.recipes.append(recipe)
                         

@@ -303,6 +303,47 @@ func updateLocalDatabaseInstructionArray(objects: [InstructionObject]){
 }
 
 
+func findTimerDuration(input: String) -> String{
+    
+    var timerDuration = "PT0M";
+    var inputLower = input.lowercased()
+    var timerConversions = [
+        "second" : 0.0167,
+        "seconds" : 0.0167,
+        "minute" : 1,
+        "minutes" : 1,
+        "hour" : 60,
+        "hours" : 60
+    ]
+    
+    var arrayString = inputLower.split(separator: " ")
+    
+    for index in 0..<arrayString.count{
+        if(timerConversions[String(arrayString[index])] != nil){
+            for index2 in stride(from: index, through: 0, by: -1){
+                if(isNumbers(input : String(arrayString[index2]))){
+                    
+                    var minuteMultiplier = timerConversions[String(arrayString[index])] ?? 0
+                    var numberOfMinutes = Double(String(arrayString[index2])) ?? 0 * minuteMultiplier
+                    
+                    timerDuration = "PT" + String(numberOfMinutes) + "M"
+                }
+            }
+        }
+    }
+    
+    return timerDuration
+}
+
+func isNumbers(input: String) -> Bool{
+    
+    for letter in input{
+        if(!letter.isNumber){
+            return false
+        }
+    }
+    return true
+}
 
 
 /*
