@@ -17,8 +17,13 @@ struct ScheduleView: View {
     @State var date = Date()
     
     @State var recipe = RecipeObject()
+    @State var recipePasser = RecipeObject()
     
     @State var mealEvents = localdb.mealEvents
+    
+    @State var popoverPresented = false
+    
+    @State var linkIsActive = false
     
     let dateFormatter : DateFormatter = {
         let formatter = DateFormatter()
@@ -28,52 +33,89 @@ struct ScheduleView: View {
     
     
     var body: some View {
-        
-        VStack{
-            
-            List(){
-                if(mealEvents.count == 0){
-                    Text("No meals planned")
+            VStack{
+                
+                NavigationLink(destination: CartView(recipe: recipePasser),isActive: $linkIsActive){
                 }
-                ForEach(0..<mealEvents.count, id: \.self){
-                    idx in
-                    
-                    HStack{
-                        Text(mealEvents[idx].recipeName)
-                        Text(mealEvents[idx].dateString)
-                        
-                        
+                
+                List(){
+                    if(mealEvents.count == 0){
+                        Text("No meals planned")
                     }
-                }
-            }
-            
-            Form {
-                DatePicker("Meal Date", selection: $date, in: Date()...)
-                Picker(selection: $recipeIDIndex, label: Text("Recipes")) {
-                    ForEach(0 ..< localdb.recipes.count) {
+                    ForEach(0..<mealEvents.count, id: \.self){
                         idx in
-                        Text(localdb.recipes[idx].recipeName)
+                        
+                        HStack{
+                            Text(mealEvents[idx].recipeName)
+                            Text(mealEvents[idx].dateString)
+                            
+                            
+                        }
+                    }
+                }
+                
+                Form {
+                    DatePicker("Meal Date", selection: $date, in: Date()...)
+                    Picker(selection: $recipeIDIndex, label: Text("Recipes")) {
+                        ForEach(0 ..< localdb.recipes.count) {
+                            idx in
+                            Text(localdb.recipes[idx].recipeName)
+                        }
+                    }
+                    
+                    
+                    Button(action: {
+                                            
+                        var mealEvent = MealEventObject(recipeID: localdb.recipes[recipeIDIndex].recipeID, dateString: dateFormatter.string(from: date))
+                            localdb.mealEvents.append(mealEvent)
+                        
+                            mealEvents = localdb.mealEvents
+                            
+                            saveRealmObject(mealEvent)
+                        
+                        print(mealEvents.last)
+                            popoverPresented = true
+                        }) {
+                            Text("Add Meal")
                     }
                 }
                 
                 
-                Button(action: {
-                    
+            }.popover(isPresented: $popoverPresented){
+                VStack{
+                    Text("Would you like to add the ingredients of: "  + localdb.mealEvents.last!.recipeName +   " to an Amazon cart?")
+                
+                    Button(
+                        action: {
                         
-                    
-                    var mealEvent = MealEventObject(recipeID: localdb.recipes[recipeIDIndex].recipeID, dateString: dateFormatter.string(from: date))
-                        localdb.mealEvents.append(mealEvent)
-                    
-                        mealEvents = localdb.mealEvents
+                        for recipe in localdb.recipes{
+                            if(recipe.recipeID == localdb.mealEvents.last!.recipeID){
+                                recipePasser = recipe
+                            }
+                        }
                         
-                        saveRealmObject(mealEvent)
-                    }) {
-                        Text("Add Meal")
+                        
+                        popoverPresented = false
+                        linkIsActive = true
+                        print(recipePasser)
+                        print(linkIsActive)
+                        
+                    },
+                           label: {
+                            Text("Yes")
+                    })
+                                   
+                    Button(
+                        action: {
+                            popoverPresented = false
+                        },
+                        
+                        label: {
+                            Text("No")
+                        })
                 }
             }
             
-            
-        }
     }
 }
 

@@ -81,10 +81,10 @@ struct AddInstructionView: View {
                     action: {
                         let stringTimer: String = "PT"+textTempTimer+"M"
                         if(stringTimer == "PTM"){
-                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: true, timerDuration: "PT0M", recipeID: recipe.recipeID))
+                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: false, timerDuration: "PT0M", recipeID: recipe.recipeID))
                         }
                         else{
-                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: false, timerDuration: stringTimer, recipeID: recipe.recipeID))
+                            existingInstructions.append(InstructionObject(instruction: tempInstruction, hasTimer: true, timerDuration: stringTimer, recipeID: recipe.recipeID))
                         }
                         textTempTimer = "";
                         tempInstruction = "";
@@ -111,6 +111,19 @@ struct AddInstructionView: View {
                                 instruction.order = i;
                                 i+=1;
                             }
+                            
+                            localdb.recipes.append(recipe)
+                            for ingredient in existingIngredients {
+                                localdb.ingredients.append(ingredient)
+                            }
+                            for instruction in existingInstructions {
+                                localdb.instructions.append(instruction)
+                            }
+                            
+                            saveRealmArray(existingIngredients)
+                            saveRealmArray(existingInstructions)
+                            saveRealmObject(recipe)
+                            
                             linkIsActive = true
                         },
                         label: {
