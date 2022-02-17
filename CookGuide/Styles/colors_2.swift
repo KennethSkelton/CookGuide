@@ -1,7 +1,7 @@
 import SwiftUI
 
 
-let primaryColor = Color(red: 1.00, green: 0.00, blue: 0.88);
+let primaryColor = Color(red: 1.00, green: 0.97, blue: 0.88);
 let primaryLightColor = Color(red: 1.00, green: 1.00, blue: 1.00);
 let primaryDarkColor = Color(red: 0.80, green: 0.77, blue: 0.69);
 let primaryTextColor = Color(red: 0.00, green: 0.00, blue: 0.00);
