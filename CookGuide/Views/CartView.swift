@@ -58,9 +58,15 @@ struct CartView: View {
         for ingredient in localdb.ingredients {
             
             
+            
+            
+            
+            
             if(ingredient.recipeID == recipe.recipeID){
                 
-                var urlString = "https://www.amazon.com/s?k=" + ingredient.ingredient
+                print(ingredient.ingredient)
+                print(ingredient)
+                var urlString = "https://www.amazon.com/s?k=" + ingredient.ingredient.replacingOccurrences(of: " ", with: "+")
                 
                 let url = URL(string: urlString)
                 do {
@@ -106,14 +112,6 @@ struct CartView: View {
                     
                     }
                     
-                    var counter = 1
-                    
-                    for asin in asinArray{
-                        outputUrl += "&ASIN." + String(counter) + "=" + asin + "&" + "Quantity."+String(counter)+"=1"
-                        
-                        counter+=1
-                    }
-                    
                 }
                 catch{
                     print("Failure")
@@ -121,9 +119,18 @@ struct CartView: View {
                 
             }
         }
+        var counter = 1
         
+        asinArray.removeFirst() //because
+        print(asinArray)
         
+        for asin in asinArray{
+            outputUrl += "&ASIN." + String(counter) + "=" + asin + "&" + "Quantity."+String(counter)+"=1"
+            
+            counter+=1
+        }
         
+        print(outputUrl)
         return outputUrl
     }
 }
