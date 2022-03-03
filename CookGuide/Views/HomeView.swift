@@ -8,7 +8,11 @@
 import SwiftUI
 import RealmSwift
 
-
+public extension Font {
+  init(uiFont: UIFont) {
+    self = Font(uiFont as CTFont)
+  }
+}
 struct HomeView: View {
     
     @State var username = "Kenny@skeltons.com"
@@ -29,7 +33,7 @@ struct HomeView: View {
                         Text("My Recipes")
                             .frame(height: 100, alignment: .center)
                             .background(primaryColor)
-                            .font(.system(size:30, weight: .light, design: .serif))
+                            .font(Font(uiFont:titleFont!))
                             
                     }
                     Spacer()
