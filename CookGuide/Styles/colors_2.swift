@@ -10,3 +10,6 @@ let secondaryLightColor = Color(red: 0.60, green: 0.93, blue: 0.60);
 let secondaryDarkColor = Color(red: 0.20, green: 0.54, blue: 0.24);
 let secondaryTextColor = Color(red: 0.00, green: 0.00, blue: 0.00);
 let titleFont = UIFont(name: "PermanentMarker-Regular", size: 36);
+let bodyFont = UIFont(name: "Spectral-Medium", size: 24);
+let itBodyFont = UIFont(name: "Spectral-MediumItalic", size: 24);
+let buttonFont = UIFont(name: "QuattrocentoSans-Regular", size: 28);
