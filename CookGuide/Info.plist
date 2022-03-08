@@ -23,6 +23,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>PermanentMarker-Regular.ttf</string>
+		<string>QuattrocentoSans-Regular.ttf</string>
+		<string>Spectral-MediumItalic.ttf</string>
+		<string>Spectral-Medium.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
