@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		943D43EE27D15ACE00B6B4F5 /* PermanentMarker-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 943D43ED27D15ACE00B6B4F5 /* PermanentMarker-Regular.ttf */; };
 		9F07CE0A273B0C7800325BE1 /* colors_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F07CE09273B0C7800325BE1 /* colors_2.swift */; };
 		9F23277E2707EB4200F2D82D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F23277D2707EB4200F2D82D /* Functions.swift */; };
 		9F2327822707EE6200F2D82D /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2327812707EE6200F2D82D /* AddRecipeView.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		943D43ED27D15ACE00B6B4F5 /* PermanentMarker-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PermanentMarker-Regular.ttf"; sourceTree = "<group>"; };
 		9F07CE09273B0C7800325BE1 /* colors_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colors_2.swift; sourceTree = "<group>"; };
 		9F23277D2707EB4200F2D82D /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		9F2327812707EE6200F2D82D /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
@@ -111,10 +113,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		943D43EA27D159CC00B6B4F5 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				943D43ED27D15ACE00B6B4F5 /* PermanentMarker-Regular.ttf */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
 		9F07CE08273B0C4800325BE1 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
 				9F07CE09273B0C7800325BE1 /* colors_2.swift */,
+				943D43EA27D159CC00B6B4F5 /* font */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -315,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F6C002F26EA524D00689AA7 /* Preview Assets.xcassets in Resources */,
+				943D43EE27D15ACE00B6B4F5 /* PermanentMarker-Regular.ttf in Resources */,
 				9F6C002C26EA524D00689AA7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
